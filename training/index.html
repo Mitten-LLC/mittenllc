@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Practical AI training from Mitten for people doing complex, consequential work." />
+    <meta name="theme-color" content="#2f5bff" />
+    <meta property="og:title" content="AI Training — Mitten" />
+    <meta property="og:description" content="Practical AI training for people doing complex, consequential work." />
+    <meta property="og:image" content="https://mitten.consulting/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>AI Training — Mitten</title>
+    <link rel="icon" href="/img/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      body { background: #2f5bff; color: white; }
+      .site-header { border-color: rgba(255,255,255,.25); }
+      .site-nav > a:not(.nav-cta)::after { background: white; }
+      .nav-cta { border-color: white; }
+      .nav-cta:hover { background: white; color: #2f5bff; }
+      .training-hero { min-height: calc(100vh - 92px); padding-block: 90px 50px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 80px; align-items: center; }
+      .training-hero h1 { font-size: clamp(65px, 8.2vw, 126px); line-height: .9; letter-spacing: -.07em; font-weight: 500; margin: 30px 0; }
+      .training-hero h1 em { color: #c8ff45; font-weight: 400; }
+      .training-hero-copy > p:not(.eyebrow) { max-width: 620px; color: #dbe1ff; line-height: 1.7; font-size: 18px; }
+      .training-hero .eyebrow { color: #c8ff45; }
+      .portal-preview { background: #f2f0e9; color: #191c1b; padding: 24px; min-height: 500px; box-shadow: 15px 15px 0 #c8ff45; transform: rotate(2deg); display: flex; flex-direction: column; }
+      .portal-top { display: flex; justify-content: space-between; border-bottom: 1px solid #c8cac1; padding-bottom: 18px; font: 500 9px var(--mono); }
+      .portal-index { margin-top: auto; font: 500 110px/.8 var(--sans); letter-spacing: -.09em; color: #2f5bff; }
+      .portal-preview h2 { font-size: 38px; line-height: 1.05; letter-spacing: -.05em; margin: 28px 0 18px; }
+      .portal-preview p { color: #5b615e; line-height: 1.6; }
+      .portal-progress { margin-top: 30px; height: 7px; background: #d7d9d2; }
+      .portal-progress span { display: block; width: 46%; height: 100%; background: #2f5bff; }
+      .waitlist { border-top: 1px solid rgba(255,255,255,.25); padding-block: 70px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+      .waitlist h2 { font-size: clamp(42px, 5vw, 72px); line-height: .98; letter-spacing: -.06em; font-weight: 500; margin: 0; }
+      .waitlist p { color: #dbe1ff; line-height: 1.7; }
+      .waitlist .button { width: auto; background: #c8ff45; color: #191c1b; margin-top: 15px; }
+      @media (max-width: 900px) { .training-hero, .waitlist { grid-template-columns: 1fr; }.training-hero { padding-top: 70px; }.portal-preview { min-height: 420px; }.site-nav { background: #2f5bff; } }
+      @media (max-width: 560px) { .training-hero { min-height: auto; }.portal-index { font-size: 80px; }.waitlist { gap: 30px; } }
+    </style>
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Mitten home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Mitten</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span><span class="sr-only">Open menu</span></button>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <a href="/#capabilities">Capabilities</a><a href="/#approach">Approach</a><a href="/training/">AI Training</a><a class="nav-cta" href="mailto:ben@mitten.consulting?subject=Mitten%20AI%20Training">Ask about training <span>↗</span></a>
+      </nav>
+    </header>
+    <main>
+      <section class="training-hero section-shell">
+        <div class="training-hero-copy reveal">
+          <p class="eyebrow">MITTEN / LEARNING</p>
+          <h1>Practice<br />before the<br /><em>stakes are real.</em></h1>
+          <p>Applied AI training for people doing complex, consequential work. Learn in realistic scenarios, build repeatable habits, and keep human judgment at the center.</p>
+          <a class="button button-light" href="mailto:ben@mitten.consulting?subject=Mitten%20AI%20Training">Bring training to your team <span>↗</span></a>
+        </div>
+        <div class="portal-preview reveal">
+          <div class="portal-top"><span>COURSE 01</span><span>13 MODULES</span></div>
+          <div class="portal-index">01</div>
+          <h2>AI-Assisted<br />Software Testing</h2>
+          <p>A self-guided learning path from safe-use foundations through API testing, automation handoff, and critical review.</p>
+          <div class="portal-progress" aria-label="Course preview progress"><span></span></div>
+        </div>
+      </section>
+      <section class="waitlist section-shell reveal">
+        <h2>The training hub<br />is taking shape.</h2>
+        <div><p>This page is the future front door for Mitten's course catalog—including the dedicated learning experience now being prepared for your organization. Private access, progress tracking, and cohort support can layer in as the program grows.</p><a class="button" href="mailto:ben@mitten.consulting?subject=Mitten%20Training%20Hub">Get an early look <span>→</span></a></div>
+      </section>
+    </main>
+    <script type="module" src="/script.js"></script>
+  </body>
+</html>
