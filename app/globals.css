@@ -1,0 +1,30 @@
+@import "../styles.css";
+
+:root {
+  --sans: var(--font-site-sans), sans-serif;
+  --mono: var(--font-site-mono), monospace;
+}
+
+.training-page { background: #2f5bff; color: white; min-height: 100vh; }
+.training-page .site-header { border-color: rgba(255,255,255,.25); }
+.training-page .site-nav > a:not(.nav-cta)::after { background: white; }
+.training-page .nav-cta { border-color: white; }
+.training-page .nav-cta:hover { background: white; color: #2f5bff; }
+.training-hero { min-height: calc(100vh - 92px); padding-block: 90px 50px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 80px; align-items: center; }
+.training-hero h1 { font-size: clamp(65px, 8.2vw, 126px); line-height: .9; letter-spacing: -.07em; font-weight: 500; margin: 30px 0; }
+.training-hero h1 em { color: #c8ff45; font-weight: 400; }
+.training-hero-copy > p:not(.eyebrow) { max-width: 620px; color: #dbe1ff; line-height: 1.7; font-size: 18px; }
+.training-hero .eyebrow { color: #c8ff45; }
+.portal-preview { background: #f2f0e9; color: #191c1b; padding: 24px; min-height: 500px; box-shadow: 15px 15px 0 #c8ff45; transform: rotate(2deg); display: flex; flex-direction: column; }
+.portal-top { display: flex; justify-content: space-between; border-bottom: 1px solid #c8cac1; padding-bottom: 18px; font: 500 9px var(--mono); }
+.portal-index { margin-top: auto; font: 500 110px/.8 var(--sans); letter-spacing: -.09em; color: #2f5bff; }
+.portal-preview h2 { font-size: 38px; line-height: 1.05; letter-spacing: -.05em; margin: 28px 0 18px; }
+.portal-preview p { color: #5b615e; line-height: 1.6; }
+.portal-progress { margin-top: 30px; height: 7px; background: #d7d9d2; }
+.portal-progress span { display: block; width: 46%; height: 100%; background: #2f5bff; }
+.waitlist { border-top: 1px solid rgba(255,255,255,.25); padding-block: 70px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+.waitlist h2 { font-size: clamp(42px, 5vw, 72px); line-height: .98; letter-spacing: -.06em; font-weight: 500; margin: 0; }
+.waitlist p { color: #dbe1ff; line-height: 1.7; }
+.waitlist .button { width: auto; background: #c8ff45; color: #191c1b; margin-top: 15px; }
+@media (max-width: 900px) { .training-hero, .waitlist { grid-template-columns: 1fr; }.training-hero { padding-top: 70px; }.portal-preview { min-height: 420px; }.training-page .site-nav { background: #2f5bff; } }
+@media (max-width: 560px) { .training-hero { min-height: auto; }.portal-index { font-size: 80px; }.waitlist { gap: 30px; } }
