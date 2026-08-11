@@ -35,24 +35,21 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="decision-board" aria-label="Mitten decision sequence: outcome, people, product, process, then technology">
-            <div className="board-head"><span>MITTEN / DECISION ORDER</span><span>START HERE ↓</span></div>
-            <ol>
-              <li className="is-first"><span>01</span><strong>Outcome</strong><small>What must become true?</small></li>
-              <li><span>02</span><strong>People</strong><small>Who needs to succeed?</small></li>
-              <li><span>03</span><strong>Product</strong><small>What should we make useful?</small></li>
-              <li><span>04</span><strong>Process</strong><small>How will it work in reality?</small></li>
-              <li className="is-last"><span>05</span><strong>Technology</strong><small>Does AI improve the answer?</small></li>
-            </ol>
-            <p className="board-note">AI is a design choice—not the starting requirement.</p>
-          </div>
         </section>
 
         <section className="point-of-view">
           <div className="wrap point-grid">
             <p className="section-label">A SIMPLE BELIEF</p>
             <blockquote>“AI changes the tools. It does not change the need to understand the mission.”</blockquote>
-            <p>We start with the outcome, the people, and the work. Then we make the smallest useful move that can produce evidence.</p>
+            <p className="point-copy">We start with the outcome, the people, and the work. Then we make the smallest useful move that can produce evidence.</p>
+            <ol className="decision-flow" aria-label="Mitten decision sequence: outcome, people, product, process, then technology">
+              <li><span>01</span><strong>Outcome</strong><small>What must become true?</small></li>
+              <li><span>02</span><strong>People</strong><small>Who needs to succeed?</small></li>
+              <li className="is-product"><span>03</span><strong>Product</strong><small>What should become useful?</small></li>
+              <li><span>04</span><strong>Process</strong><small>How will it work in reality?</small></li>
+              <li className="is-technology"><span>05</span><strong>Technology</strong><small>Does AI improve the answer?</small></li>
+            </ol>
+            <p className="decision-rule">Technology comes last in the sequence—not last in importance.</p>
           </div>
         </section>
 
