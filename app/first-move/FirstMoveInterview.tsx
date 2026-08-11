@@ -98,7 +98,7 @@ export function FirstMoveInterview() {
   return (
     <main className="os-page">
       <header className="os-header">
-        <a className="brand" href="/" aria-label="Mitten home"><span className="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Mitten</span></a>
+        <a href="/" aria-label="Mitten home"><img className="mitten-logo" src="/brand/mitten-logo-kit/web/mitten-wordmark-primary.svg" alt="Mitten" width="154" height="40" /></a>
         <span className="os-header-label">MITTEN OS / FIRST MOVE</span>
         <a className="os-close" href="/" aria-label="Return to home">×</a>
       </header>
@@ -133,7 +133,7 @@ export function FirstMoveInterview() {
             <div className="brief-item"><span>EVIDENCE TO COLLECT</span><p>{brief.evidence}</p></div>
             <div className="brief-actions">
               <button onClick={() => navigator.clipboard.writeText(`MITTEN FIRST MOVE\n\nOpportunity: ${brief.opportunity}\n\nPeople & outcome: ${brief.people}\n\nFirst move: ${brief.firstMove}\n\nEvidence: ${brief.evidence}`)}>Copy brief</button>
-              <a href="https://calendly.com/mitten/intro">Talk it through ↗</a>
+              <a href="/#book">Talk it through ↗</a>
             </div>
           </article>
           <button className="os-restart" onClick={restart}>Start over</button>

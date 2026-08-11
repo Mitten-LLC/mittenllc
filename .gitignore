@@ -4,3 +4,6 @@ dist/
 .wrangler/
 .next/
 *.tsbuildinfo
+.vinext/
+.playwright-cli/
+output/playwright/

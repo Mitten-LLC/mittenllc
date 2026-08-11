@@ -7,19 +7,19 @@ const mono = Geist_Mono({ variable: "--font-site-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mitten.consulting"),
-  title: "Mitten — AI that works in the real world",
-  description: "Practical AI strategy, product operations, mission delivery, and hands-on training.",
-  icons: { icon: "/img/favicon.ico" },
+  title: "Mitten — Product before technology. Product before AI.",
+  description: "Mitten helps leaders turn hard problems into useful products, operating models, and teams—using AI when it earns a place.",
+  icons: { icon: "/brand/mitten-logo-kit/web/mitten-favicon.svg" },
   openGraph: {
-    title: "Mitten — AI that works in the real world",
-    description: "Practical AI strategy, product operations, mission delivery, and hands-on training.",
-    images: ["/og.png"],
+    title: "Mitten — Product before technology. Product before AI.",
+    description: "Product strategy and applied AI for consequential work.",
+    images: ["/og-product-first.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mitten — AI that works in the real world",
-    description: "Practical AI strategy, product operations, mission delivery, and hands-on training.",
-    images: ["/og.png"],
+    title: "Mitten — Product before technology. Product before AI.",
+    description: "Product strategy and applied AI for consequential work.",
+    images: ["/og-product-first.png"],
   },
 };
 
