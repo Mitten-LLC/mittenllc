@@ -2,6 +2,7 @@
 
 :root {
   --sans: var(--font-site-sans), sans-serif;
+  --display: var(--font-site-display), Georgia, serif;
   --mono: var(--font-site-mono), monospace;
 }
 
@@ -109,7 +110,7 @@
 .home-v2 .wrap { width: min(1240px, calc(100% - 80px)); margin-inline: auto; }
 .mitten-logo { display: block; width: auto; height: 42px; }
 .home-header { min-height: 88px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--home-line); }
-.home-header nav { display: flex; align-items: center; gap: 30px; font-size: 14px; font-weight: 650; }
+.home-header nav { display: flex; align-items: center; gap: 30px; font-size: 13px; font-weight: 700; letter-spacing: -.01em; }
 .home-header nav > a:not(.nav-book) { padding-block: 10px; border-bottom: 1px solid transparent; }
 .home-header nav > a:not(.nav-book):hover { border-color: currentColor; }
 .nav-book, .solid-button, .outline-button { min-height: 50px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: space-between; gap: 38px; font-size: 14px; font-weight: 750; }
@@ -120,16 +121,18 @@
 .kicker, .section-label { margin: 0; font: 650 11px/1.4 var(--mono); letter-spacing: .13em; text-transform: uppercase; }
 .kicker { display: flex; align-items: center; gap: 12px; }
 .kicker span { width: 9px; height: 9px; background: var(--home-maize); border: 2px solid var(--home-navy); }
-.home-hero h1 { max-width: 820px; margin: 30px 0; font-size: clamp(52px, 5.8vw, 80px); font-weight: 560; line-height: .98; letter-spacing: -.062em; }
-.home-hero h1 em { display: inline-block; color: var(--home-navy); font-weight: 560; font-style: normal; text-decoration: underline; text-decoration-color: var(--home-maize); text-decoration-thickness: .13em; text-underline-offset: .12em; }
-.hero-lede { max-width: 670px; margin: 0; font-size: clamp(18px, 1.7vw, 22px); line-height: 1.58; color: rgba(7, 29, 58, .76); }
+.home-hero h1, .section-intro h2, .first-move h2, .training-home h2, .booking h2, .point-grid blockquote { font-family: var(--display); font-variation-settings: "SOFT" 35, "WONK" 0; }
+.home-hero h1 { max-width: 1040px; margin: 30px 0; font-size: clamp(58px, 7.3vw, 104px); font-weight: 720; line-height: .9; letter-spacing: -.055em; }
+.home-hero h1 em { display: inline-block; color: var(--home-navy); font-weight: 600; font-style: italic; text-decoration: underline; text-decoration-color: var(--home-maize); text-decoration-thickness: .12em; text-underline-offset: .1em; }
+.hero-lede { max-width: 790px; margin: 0; font-size: clamp(19px, 1.7vw, 23px); line-height: 1.55; letter-spacing: -.018em; color: rgba(7, 29, 58, .76); }
 .home-actions { margin-top: 38px; display: flex; align-items: center; gap: 28px; }
 .solid-button { background: var(--home-navy); color: var(--home-white) !important; box-shadow: 5px 5px 0 var(--home-maize); }
 .solid-button:hover { transform: translate(-1px, -1px); box-shadow: 7px 7px 0 var(--home-maize); }
 .quiet-link { padding: 8px 0; border-bottom: 1px solid var(--home-navy); font: 650 12px var(--mono); }
+.proof-line { max-width: 820px; margin: 42px 0 0; padding-top: 18px; border-top: 1px solid var(--home-line); color: rgba(7, 29, 58, .66); font: 600 11px/1.55 var(--mono); letter-spacing: .035em; text-transform: uppercase; }
 .point-of-view { background: var(--home-maize); border-block: 1px solid var(--home-navy); }
 .point-grid { padding-block: 58px 48px; display: grid; grid-template-columns: .35fr 1.2fr .7fr; gap: 45px 50px; align-items: center; }
-.point-grid blockquote { margin: 0; font-size: clamp(25px, 2.6vw, 38px); line-height: 1.14; letter-spacing: -.04em; font-weight: 650; }
+.point-grid blockquote { margin: 0; font-size: clamp(29px, 3vw, 44px); line-height: 1.06; letter-spacing: -.045em; font-weight: 650; }
 .point-copy { margin: 0; font-size: 16px; line-height: 1.6; }
 .decision-flow { grid-column: 1 / -1; list-style: none; margin: 16px 0 0; padding: 30px 0 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 34px; border-top: 1px solid var(--home-navy); }
 .decision-flow li { min-height: 116px; padding: 15px 14px 12px; display: flex; flex-direction: column; position: relative; }
@@ -142,12 +145,12 @@
 .decision-rule { grid-column: 1 / -1; margin: -20px 0 0 !important; text-align: right; font: 650 10px/1.5 var(--mono) !important; text-transform: uppercase; letter-spacing: .07em; }
 .method { padding-block: 130px; }
 .section-intro { display: grid; grid-template-columns: .38fr 1fr; align-items: start; margin-bottom: 70px; }
-.section-intro h2, .first-move h2, .training-home h2, .booking h2 { max-width: 820px; margin: -9px 0 0; font-size: clamp(42px, 5vw, 68px); line-height: 1; letter-spacing: -.055em; font-weight: 580; }
+.section-intro h2, .first-move h2, .training-home h2, .booking h2 { max-width: 880px; margin: -9px 0 0; font-size: clamp(46px, 5.3vw, 76px); line-height: .97; letter-spacing: -.045em; font-weight: 680; }
 .method-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--home-navy); }
 .method-grid article { min-height: 440px; padding: 30px; display: flex; flex-direction: column; border-right: 1px solid var(--home-navy); }
 .method-grid article:last-child { border-right: 0; }
 .method-number { color: rgba(7, 29, 58, .57); font: 650 11px var(--mono); }
-.method-grid h3 { margin: 78px 0 20px; font-size: 30px; line-height: 1.05; letter-spacing: -.04em; }
+.method-grid h3 { margin: 78px 0 20px; font: 650 34px/1 var(--display); letter-spacing: -.045em; }
 .method-grid p { margin: 0; color: rgba(7, 29, 58, .75); font-size: 16px; line-height: 1.65; }
 .method-grid ul { list-style: none; margin: auto 0 0; padding: 24px 0 0; border-top: 1px solid var(--home-line); }
 .method-grid li { padding-block: 5px; font: 600 11px/1.4 var(--mono); text-transform: uppercase; }
@@ -158,7 +161,7 @@
 .offer-list { border-top: 1px solid rgba(255, 255, 255, .25); }
 .offer-list article { min-height: 180px; padding-block: 30px; display: grid; grid-template-columns: 70px .8fr 1fr .75fr; gap: 28px; align-items: start; border-bottom: 1px solid rgba(255, 255, 255, .25); }
 .offer-list article > span { color: var(--home-maize); font: 600 11px var(--mono); }
-.offer-list h3 { margin: -5px 0 0; font-size: 28px; line-height: 1.15; letter-spacing: -.035em; }
+.offer-list h3 { margin: -5px 0 0; font: 650 31px/1.08 var(--display); letter-spacing: -.035em; }
 .offer-list p { margin: -3px 0 0; color: var(--home-ice); font-size: 16px; line-height: 1.65; }
 .offer-list small { color: var(--home-maize); font: 600 10px/1.55 var(--mono); letter-spacing: .05em; }
 .first-move { padding-block: 130px; display: grid; grid-template-columns: 1fr .9fr; gap: 10vw; align-items: center; }
@@ -180,7 +183,7 @@
 .outline-button:hover { background: var(--home-navy); color: var(--home-white); }
 .training-index { min-height: 290px; padding: 25px; display: flex; flex-direction: column; background: var(--home-navy); color: var(--home-white); box-shadow: 10px 10px 0 var(--home-white); }
 .training-index span, .training-index small { font: 600 10px var(--mono); letter-spacing: .08em; }
-.training-index strong { margin: auto 0; font-size: 27px; line-height: 1.07; letter-spacing: -.04em; }
+.training-index strong { margin: auto 0; font: 650 31px/1.02 var(--display); letter-spacing: -.035em; }
 .training-index small { color: var(--home-maize); }
 .booking { padding-block: 130px; display: grid; grid-template-columns: .72fr 1fr; gap: 9vw; align-items: start; }
 .booking h2 { margin: 24px 0 28px; }
@@ -229,7 +232,7 @@
   .home-header nav a:first-child { display: none; }
   .home-header .nav-book { min-height: 34px; }
   .home-hero { padding-block: 62px 76px; }
-  .home-hero h1 { font-size: 42px; }
+  .home-hero h1 { font-size: 49px; line-height: .92; }
   .hero-lede { font-size: 18px; }
   .home-actions { align-items: stretch; flex-direction: column; }
   .solid-button { width: 100%; }

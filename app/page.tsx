@@ -27,12 +27,13 @@ export default function Home() {
         <section className="home-hero wrap">
           <div className="hero-statement">
             <p className="kicker"><span /> Government ProductOps + practical AI</p>
-            <h1>Product before technology.<br /><em>Product before AI.</em></h1>
-            <p className="hero-lede">Mitten brings product discipline to government missions—and helps organizations and people build, optimize, and integrate AI into everyday work and life.</p>
+            <h1>Skip the pitch decks.<br /><em>Ship the first useful move.</em></h1>
+            <p className="hero-lede">Mitten diagnoses the real workflow, decision, or acquisition problem underneath the AI conversation—then proves a first move works before anyone commits a budget line to it.</p>
             <div className="home-actions">
-              <a className="solid-button" href="/first-move/">Find your first move <span>→</span></a>
-              <a className="quiet-link" href="#work">See where we help <span>↓</span></a>
+              <a className="solid-button" href="/first-move/">Get your first move <span>→</span></a>
+              <a className="quiet-link" href="#book">See how a 30-minute call works <span>↓</span></a>
             </div>
+            <p className="proof-line">Built for PMO, acquisition, contractor, and product teams across DoD and federal civilian environments.</p>
           </div>
 
         </section>
@@ -61,20 +62,20 @@ export default function Home() {
           <div className="method-grid">
             <article>
               <span className="method-number">01</span>
-              <h3>Frame the product</h3>
-              <p>Clarify the people, problem, promise, constraints, and evidence of success before a solution hardens.</p>
+              <h3>What&apos;s actually true?</h3>
+              <p>Separate the stated request from the outcome, constraint, and evidence that should drive the decision.</p>
               <ul><li>Opportunity framing</li><li>Product strategy</li><li>Outcome definition</li></ul>
             </article>
             <article>
               <span className="method-number">02</span>
-              <h3>See the system</h3>
-              <p>Map the real work: the decisions, handoffs, judgment, incentives, and failure modes technology must respect.</p>
+              <h3>Who has to live with this?</h3>
+              <p>Map the people, handoffs, judgment, incentives, and failure modes a useful product has to respect.</p>
               <ul><li>Workflow discovery</li><li>Operating model</li><li>Risk and readiness</li></ul>
             </article>
             <article className="method-accent">
               <span className="method-number">03</span>
-              <h3>Choose the technology</h3>
-              <p>Use AI where it creates a measurable advantage. Use a simpler tool—or no new tool—when it does not.</p>
+              <h3>Does AI belong here?</h3>
+              <p>Use AI where it creates a measurable advantage. Choose a simpler tool—or no new tool—when it does not.</p>
               <ul><li>AI opportunity design</li><li>Prototype and evaluation</li><li>Responsible adoption</li></ul>
             </article>
           </div>
@@ -87,9 +88,9 @@ export default function Home() {
               <h2>One product discipline. Two kinds of work.</h2>
             </header>
             <div className="offer-list">
-              <article id="government"><span>01</span><h3>Government missions</h3><p>Product management and ProductOps for the Department of Defense, federal agencies, and government contractors—from acquisition strategy and user-centered requirements to outcome roadmaps and transformation.</p><small>ACQUISITION · REQUIREMENTS · METRICS · PRODUCTOPS</small></article>
-              <article id="ai-adoption"><span>02</span><h3>Practical AI adoption</h3><p>Find where AI can remove friction, improve decisions, or create something genuinely useful. Then reshape the workflow or routine, test the value, and make it part of everyday work and life.</p><small>OPPORTUNITY MAPPING · WORKFLOW DESIGN · ADOPTION</small></article>
-              <article><span>03</span><h3>Build and integrate</h3><p>Move from an idea to a working prototype, internal tool, or assisted process—without losing the human judgment, context, and evidence that make it trustworthy.</p><small>PROTOTYPES · INTEGRATIONS · EVALUATION</small></article>
+              <article id="government"><span>01</span><h3>Government missions</h3><p>Turn acquisition strategy, user needs, and mission outcomes into a decision-ready product frame a PMO can defend—and a delivery team can use.</p><small>PRODUCT FRAME · OUTCOME ROADMAP · DECISION BRIEF</small></article>
+              <article id="ai-adoption"><span>02</span><h3>Practical AI adoption</h3><p>Find the repeated judgment call, handoff, or routine worth improving, then redesign it so AI removes real friction instead of creating another tool to manage.</p><small>WORKFLOW MAP · ADOPTION PLAN · MEASURE OF VALUE</small></article>
+              <article><span>03</span><h3>Build and integrate</h3><p>Move from idea to a working prototype and evidence brief—so the people funding, using, and governing it can decide what deserves to scale.</p><small>WORKING PROTOTYPE · EVALUATION · INTEGRATION PATH</small></article>
             </div>
           </div>
         </section>
@@ -97,7 +98,7 @@ export default function Home() {
         <section className="first-move wrap">
           <div className="first-move-copy">
             <p className="section-label">TRY THE THINKING</p>
-            <h2>Bring the thing you can’t quite frame yet.</h2>
+            <h2>Leave with a place to start.</h2>
             <p>First Move is a short, voice-friendly diagnostic shaped around Mitten’s way of thinking. Answer four questions and leave with a practical place to begin.</p>
             <a className="solid-button" href="/first-move/">Try First Move <span>→</span></a>
             <small>About three minutes. No account required.</small>
@@ -124,8 +125,8 @@ export default function Home() {
         <section className="booking wrap" id="book">
           <div className="booking-copy">
             <p className="section-label">START A CONVERSATION</p>
-            <h2>Bring the hard problem.</h2>
-            <p>Thirty minutes to compare notes, sharpen the question, and decide whether there is a useful next move.</p>
+            <h2>Thirty minutes with the person doing the work.</h2>
+            <p>Talk directly with Ben to pressure-test the problem, sharpen the decision, and determine whether there is a useful next move.</p>
             <p className="booking-detail">No pitch deck. No obligation. Just a working conversation.</p>
           </div>
           <div className="booking-panel">
