@@ -29,9 +29,9 @@ export default function AiPage() {
             <article><span>03</span><h3>Make AI part of everyday life</h3><p>Choose the right tools, connect them to the way you already work, and build habits that survive beyond the first week.</p><small>INTEGRATION PLAN · PRACTICE</small></article>
           </div>
         </section>
-        <section className="lane-close ai-close"><div className="wrap"><p className="section-label">THE STANDARD</p><h2>Less AI theater.<br /><em>More useful work.</em></h2><p>Start small, preserve judgment, and measure whether the change actually makes work or life better.</p><a className="outline-button" href="/#book">Talk with Ben <span>→</span></a></div></section>
+        <section className="lane-close ai-close"><div className="wrap"><p className="section-label">THE STANDARD</p><h2>Less AI theater,<br /><em>more work that ships.</em></h2><a className="outline-button" href="/#book">Talk with Ben <span>→</span></a></div></section>
       </main>
-      <footer className="home-footer"><div className="wrap footer-grid"><div><BrandLogo reversed /><p>Practical AI for everyday work and life.</p></div><nav><a href="/">Home</a><a href="/government/">Government</a><a href="/first-move/">First Move</a></nav><div className="footer-contact"><a href="mailto:ben@mitten.consulting">ben@mitten.consulting</a><span>Nashville, Tennessee</span></div></div></footer>
+      <footer className="home-footer"><div className="wrap footer-grid"><div><BrandLogo reversed /></div><nav><a href="/">Home</a><a href="/government/">Government</a><a href="/first-move/">First Move</a></nav><div className="footer-contact"><a href="mailto:ben@mitten.consulting">ben@mitten.consulting</a><span>Nashville, Tennessee</span></div></div></footer>
     </div>
   );
 }

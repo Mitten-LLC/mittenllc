@@ -13,13 +13,13 @@ export const metadata: Metadata = {
   icons: { icon: "/brand/mitten-logo-kit/web/mitten-favicon.svg" },
   openGraph: {
     title: "Mitten — Start with the work",
-    description: "One way of thinking. Two kinds of work: Government ProductOps and practical AI adoption.",
+    description: "Government ProductOps and practical AI adoption, shaped around the work that needs to move.",
     images: ["/og-two-paths.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Mitten — Start with the work",
-    description: "One way of thinking. Two kinds of work: Government ProductOps and practical AI adoption.",
+    description: "Government ProductOps and practical AI adoption, shaped around the work that needs to move.",
     images: ["/og-two-paths.png"],
   },
 };

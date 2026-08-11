@@ -134,7 +134,7 @@ export function FirstMoveInterview() {
           <div className="os-intro-copy">
             <p className="eyebrow"><span className="live-dot"></span> CHOOSE YOUR FIRST MOVE</p>
             <h1>What kind of work<br /><em>brought you here?</em></h1>
-            <p>The same product discipline, tailored to two different jobs. Choose a path for four focused questions and a practical place to begin.</p>
+            <p>Choose a path. Answer four questions. Get a brief you can act on.</p>
             <div className="track-choices">
               <button onClick={() => { setTrack("government"); setStarted(true); }}><span>01</span><strong>Government ProductOps</strong><small>Programs, acquisition, requirements, delivery</small><i>→</i></button>
               <button onClick={() => { setTrack("ai"); setStarted(true); }}><span>02</span><strong>Practical AI</strong><small>Build, optimize, integrate, learn</small><i>→</i></button>
@@ -143,9 +143,7 @@ export function FirstMoveInterview() {
           </div>
           <div className="os-map track-map" aria-label="First Move paths">
             <div className="os-map-head"><span>MITTEN / FIRST MOVE</span><span>02 PATHS</span></div>
-            <p className="track-map-statement">Different context.<br /><strong>Same standard.</strong></p>
             <div className="track-principles"><span>START WITH THE OUTCOME</span><span>PRESERVE HUMAN JUDGMENT</span><span>COLLECT EVIDENCE</span><span>MAKE ONE USEFUL MOVE</span></div>
-            <p>Not a chatbot. A structured way to find the next useful question.</p>
           </div>
         </section>
       ) : complete ? (
@@ -153,7 +151,7 @@ export function FirstMoveInterview() {
           <div className="brief-heading">
             <p className="eyebrow">YOUR FIRST MOVE BRIEF</p>
             <h1>A useful place<br />to begin.</h1>
-            <p>This is a rules-based prototype of the final Mitten OS synthesis. The AI reasoning layer comes next.</p>
+            <p>This prototype uses your answers to assemble a working brief. The AI reasoning layer comes next.</p>
           </div>
           <article className="brief-card">
             <div className="brief-card-head"><span>MITTEN / 01</span><span>WORKING DRAFT</span></div>
