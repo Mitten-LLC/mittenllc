@@ -16,9 +16,9 @@ export default function Home() {
       <header className="home-header wrap">
         <a href="#top" aria-label="Mitten home"><Logo /></a>
         <nav aria-label="Main navigation">
-          <a href="#method">How we think</a>
-          <a href="#work">What we do</a>
-          <a href="/training/">Training</a>
+          <a href="#government">Government</a>
+          <a href="#ai-adoption">AI adoption</a>
+          <a href="/first-move/">First Move</a>
           <a className="nav-book" href="#book">Book a conversation <span aria-hidden="true">↗</span></a>
         </nav>
       </header>
@@ -26,12 +26,12 @@ export default function Home() {
       <main>
         <section className="home-hero wrap">
           <div className="hero-statement">
-            <p className="kicker"><span /> Product strategy + applied AI</p>
+            <p className="kicker"><span /> Government ProductOps + practical AI</p>
             <h1>Product before technology.<br /><em>Product before AI.</em></h1>
-            <p className="hero-lede">Mitten helps leaders turn hard, consequential problems into products, operating models, and teams that work—using AI when it earns a place.</p>
+            <p className="hero-lede">Mitten brings product discipline to government missions—and helps organizations and people build, optimize, and integrate AI into everyday work and life.</p>
             <div className="home-actions">
               <a className="solid-button" href="/first-move/">Find your first move <span>→</span></a>
-              <a className="quiet-link" href="#method">See how Mitten thinks <span>↓</span></a>
+              <a className="quiet-link" href="#work">See where we help <span>↓</span></a>
             </div>
           </div>
 
@@ -51,8 +51,8 @@ export default function Home() {
         <section className="point-of-view">
           <div className="wrap point-grid">
             <p className="section-label">A SIMPLE BELIEF</p>
-            <blockquote>“The most expensive AI mistake is building the wrong thing faster.”</blockquote>
-            <p>Mitten starts with the decision, behavior, or outcome that needs to change. Then we make the smallest useful move that can produce evidence.</p>
+            <blockquote>“AI changes the tools. It does not change the need to understand the mission.”</blockquote>
+            <p>We start with the outcome, the people, and the work. Then we make the smallest useful move that can produce evidence.</p>
           </div>
         </section>
 
@@ -87,12 +87,12 @@ export default function Home() {
           <div className="wrap">
             <header className="section-intro light-intro">
               <p className="section-label">WHAT WE DO</p>
-              <h2>From a hard question to working capability.</h2>
+              <h2>One product discipline. Two kinds of work.</h2>
             </header>
             <div className="offer-list">
-              <article><span>01</span><h3>Shape the opportunity</h3><p>A focused engagement to turn ambiguity into a product frame, decision path, and first experiment.</p><small>STRATEGY SPRINTS · EXECUTIVE WORKSHOPS</small></article>
-              <article><span>02</span><h3>Build to learn</h3><p>Rapid prototypes and evaluations that test usefulness, trust, feasibility, and fit before a major commitment.</p><small>PRODUCT DISCOVERY · AI PROTOTYPES</small></article>
-              <article><span>03</span><h3>Make it operational</h3><p>Product practices, operating rhythms, and enablement that help the work survive beyond the first demonstration.</p><small>PRODUCT OPERATIONS · ADOPTION</small></article>
+              <article id="government"><span>01</span><h3>Government missions</h3><p>Product management and ProductOps for the Department of Defense, federal agencies, and government contractors—from acquisition strategy and user-centered requirements to outcome roadmaps and transformation.</p><small>ACQUISITION · REQUIREMENTS · METRICS · PRODUCTOPS</small></article>
+              <article id="ai-adoption"><span>02</span><h3>Practical AI adoption</h3><p>Find where AI can remove friction, improve decisions, or create something genuinely useful. Then reshape the workflow or routine, test the value, and make it part of everyday work and life.</p><small>OPPORTUNITY MAPPING · WORKFLOW DESIGN · ADOPTION</small></article>
+              <article><span>03</span><h3>Build and integrate</h3><p>Move from an idea to a working prototype, internal tool, or assisted process—without losing the human judgment, context, and evidence that make it trustworthy.</p><small>PROTOTYPES · INTEGRATIONS · EVALUATION</small></article>
             </div>
           </div>
         </section>
@@ -112,15 +112,15 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="training-home">
+        <section className="training-home" id="client-training">
           <div className="wrap training-grid">
-            <p className="section-label">MITTEN / LEARNING</p>
+            <p className="section-label">CLIENT TRAINING</p>
             <div>
-              <h2>Build judgment,<br />not just prompt skills.</h2>
-              <p>Applied AI training for teams doing real work. Participants learn to frame problems, use AI responsibly, test outputs, and make better decisions with the tools.</p>
-              <a className="outline-button" href="/training/">Explore AI training <span>→</span></a>
+              <h2>Specialized training,<br />built around the work.</h2>
+              <p>Mitten develops private, role-specific AI training for client teams. Each learning environment lives separately from this site and reflects the organization’s workflows, tools, constraints, and responsibilities.</p>
+              <a className="outline-button" href="mailto:ben@mitten.consulting?subject=Mitten%20client%20AI%20training">Discuss client training <span>→</span></a>
             </div>
-            <div className="training-index"><span>COURSE 01</span><strong>AI-Assisted<br />Software Testing</strong><small>SELF-GUIDED · 13 MODULES</small></div>
+            <div className="training-index"><span>PRIVATE DELIVERY</span><strong>Learn with<br />your real work.</strong><small>DEDICATED CLIENT SUBDOMAIN</small></div>
           </div>
         </section>
 
@@ -148,8 +148,8 @@ export default function Home() {
 
       <footer className="home-footer">
         <div className="wrap footer-grid">
-          <div><Logo reversed /><p>Product strategy and applied AI<br />for consequential work.</p></div>
-          <nav aria-label="Footer navigation"><a href="#method">How we think</a><a href="#work">What we do</a><a href="/training/">Training</a><a href="/privacy/">Privacy</a></nav>
+          <div><Logo reversed /><p>Government ProductOps and practical AI<br />for consequential, everyday work.</p></div>
+          <nav aria-label="Footer navigation"><a href="#government">Government</a><a href="#ai-adoption">AI adoption</a><a href="/first-move/">First Move</a><a href="/privacy/">Privacy</a></nav>
           <div className="footer-contact"><a href="mailto:ben@mitten.consulting">ben@mitten.consulting</a><span>Nashville, Tennessee</span></div>
           <div className="footer-bottom"><span>© 2026 Mitten LLC</span><span>Product before technology. Product before AI.</span></div>
         </div>

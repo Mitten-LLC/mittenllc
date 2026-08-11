@@ -8,17 +8,17 @@ const mono = Geist_Mono({ variable: "--font-site-mono", subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL("https://mitten.consulting"),
   title: "Mitten — Product before technology. Product before AI.",
-  description: "Mitten helps leaders turn hard problems into useful products, operating models, and teams—using AI when it earns a place.",
+  description: "Government ProductOps and practical AI adoption for organizations and people building, optimizing, and integrating AI into everyday work and life.",
   icons: { icon: "/brand/mitten-logo-kit/web/mitten-favicon.svg" },
   openGraph: {
     title: "Mitten — Product before technology. Product before AI.",
-    description: "Product strategy and applied AI for consequential work.",
+    description: "Government ProductOps and practical AI adoption for consequential, everyday work.",
     images: ["/og-product-first.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Mitten — Product before technology. Product before AI.",
-    description: "Product strategy and applied AI for consequential work.",
+    description: "Government ProductOps and practical AI adoption for consequential, everyday work.",
     images: ["/og-product-first.png"],
   },
 };
