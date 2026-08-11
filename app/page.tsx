@@ -1,23 +1,15 @@
-const bookingUrl = process.env.GOOGLE_BOOKING_URL;
+import { BrandLogo } from "./BrandLogo";
 
-const Logo = ({ reversed = false }: { reversed?: boolean }) => (
-  <img
-    className="mitten-logo"
-    src={`/brand/mitten-logo-kit/web/mitten-wordmark-${reversed ? "reversed" : "primary"}.svg`}
-    alt="Mitten"
-    width="170"
-    height="44"
-  />
-);
+const bookingUrl = process.env.GOOGLE_BOOKING_URL;
 
 export default function Home() {
   return (
     <div className="home-v2" id="top">
       <header className="home-header wrap">
-        <a href="#top" aria-label="Mitten home"><Logo /></a>
+        <a href="#top" aria-label="Mitten home"><BrandLogo /></a>
         <nav aria-label="Main navigation">
-          <a href="#government">Government</a>
-          <a href="#ai-adoption">AI adoption</a>
+          <a href="/government/">Government</a>
+          <a href="/ai/">Practical AI</a>
           <a href="/first-move/">First Move</a>
           <a className="nav-book" href="#book">Book a conversation <span aria-hidden="true">↗</span></a>
         </nav>
@@ -26,16 +18,36 @@ export default function Home() {
       <main>
         <section className="home-hero wrap">
           <div className="hero-statement">
-            <p className="kicker"><span /> Government ProductOps + practical AI</p>
-            <h1>Skip the pitch decks.<br /><em>Ship the first useful move.</em></h1>
-            <p className="hero-lede">Mitten diagnoses the real workflow, decision, or acquisition problem underneath the AI conversation—then proves a first move works before anyone commits a budget line to it.</p>
+            <p className="kicker"><span /> One way of thinking · two kinds of work</p>
+            <h1>Start with the work.<br /><em>Make the next move useful.</em></h1>
+            <p className="hero-lede">Mitten applies product thinking to complex government missions and practical AI adoption. Choose the work that brought you here.</p>
             <div className="home-actions">
-              <a className="solid-button" href="/first-move/">Get your first move <span>→</span></a>
-              <a className="quiet-link" href="#book">See how a 30-minute call works <span>↓</span></a>
+              <a className="solid-button" href="#choose">Choose your path <span>↓</span></a>
+              <a className="quiet-link" href="/first-move/">Try First Move <span>→</span></a>
             </div>
-            <p className="proof-line">Built for PMO, acquisition, contractor, and product teams across DoD and federal civilian environments.</p>
           </div>
 
+        </section>
+
+        <section className="pathways wrap" id="choose">
+          <header className="pathways-head">
+            <p className="section-label">CHOOSE THE WORK</p>
+            <p>The disciplines overlap. The jobs, language, and evidence do not.</p>
+          </header>
+          <div className="pathway-grid">
+            <a className="pathway-card government-path" href="/government/">
+              <span>01 / GOVERNMENT PRODUCTOPS</span>
+              <h2>Move a complex mission forward.</h2>
+              <p>For government programs and contractors navigating acquisition, requirements, delivery, and organizational change.</p>
+              <strong>Explore government work <i>→</i></strong>
+            </a>
+            <a className="pathway-card ai-path" href="/ai/">
+              <span>02 / PRACTICAL AI</span>
+              <h2>Make AI useful in real life.</h2>
+              <p>For organizations and people who want to build with AI, improve a workflow, or integrate it into everyday work and life.</p>
+              <strong>Explore practical AI <i>→</i></strong>
+            </a>
+          </div>
         </section>
 
         <section className="point-of-view">
@@ -78,20 +90,6 @@ export default function Home() {
               <p>Use AI where it creates a measurable advantage. Choose a simpler tool—or no new tool—when it does not.</p>
               <ul><li>AI opportunity design</li><li>Prototype and evaluation</li><li>Responsible adoption</li></ul>
             </article>
-          </div>
-        </section>
-
-        <section className="work" id="work">
-          <div className="wrap">
-            <header className="section-intro light-intro">
-              <p className="section-label">WHAT WE DO</p>
-              <h2>One product discipline. Two kinds of work.</h2>
-            </header>
-            <div className="offer-list">
-              <article id="government"><span>01</span><h3>Government missions</h3><p>Turn acquisition strategy, user needs, and mission outcomes into a decision-ready product frame a PMO can defend—and a delivery team can use.</p><small>PRODUCT FRAME · OUTCOME ROADMAP · DECISION BRIEF</small></article>
-              <article id="ai-adoption"><span>02</span><h3>Practical AI adoption</h3><p>Find the repeated judgment call, handoff, or routine worth improving, then redesign it so AI removes real friction instead of creating another tool to manage.</p><small>WORKFLOW MAP · ADOPTION PLAN · MEASURE OF VALUE</small></article>
-              <article><span>03</span><h3>Build and integrate</h3><p>Move from idea to a working prototype and evidence brief—so the people funding, using, and governing it can decide what deserves to scale.</p><small>WORKING PROTOTYPE · EVALUATION · INTEGRATION PATH</small></article>
-            </div>
           </div>
         </section>
 
@@ -146,8 +144,8 @@ export default function Home() {
 
       <footer className="home-footer">
         <div className="wrap footer-grid">
-          <div><Logo reversed /><p>Government ProductOps and practical AI<br />for consequential, everyday work.</p></div>
-          <nav aria-label="Footer navigation"><a href="#government">Government</a><a href="#ai-adoption">AI adoption</a><a href="/first-move/">First Move</a><a href="/privacy/">Privacy</a></nav>
+          <div><BrandLogo reversed /><p>Product thinking for complex missions<br />and practical AI adoption.</p></div>
+          <nav aria-label="Footer navigation"><a href="/government/">Government</a><a href="/ai/">Practical AI</a><a href="/first-move/">First Move</a><a href="/privacy/">Privacy</a></nav>
           <div className="footer-contact"><a href="mailto:ben@mitten.consulting">ben@mitten.consulting</a><span>Nashville, Tennessee</span></div>
           <div className="footer-bottom"><span>© 2026 Mitten LLC</span><span>Product before technology. Product before AI.</span></div>
         </div>

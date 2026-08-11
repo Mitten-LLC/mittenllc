@@ -13,7 +13,9 @@ type SpeechRecognitionConstructor = new () => {
   onerror: (() => void) | null;
 };
 
-const questions = [
+type Track = "government" | "ai";
+
+const sharedQuestions = [
   {
     label: "FRAME THE OUTCOME",
     prompt: "What workflow, decision, or customer problem keeps pulling at you?",
@@ -36,25 +38,48 @@ const questions = [
   },
 ];
 
-const starters = ["AI adoption", "A difficult workflow", "Product delivery", "Team training"];
+const questionSets: Record<Track, typeof sharedQuestions> = {
+  government: [
+    { label: "FRAME THE DECISION", prompt: "What program, acquisition, or delivery decision is harder than it should be?", help: "Give us the unpolished version. What is stuck, and why does it matter now?" },
+    { label: "FIND THE MISSION USER", prompt: "Who has to live with this decision—and what are they trying to accomplish?", help: "Think beyond stakeholders. Name the person closest to the mission or operational work." },
+    { label: "SEE THE PROGRAM", prompt: "Where do requirements, handoffs, incentives, or uncertainty distort the work today?", help: "A rough sequence is enough. Include the tradeoff or review that creates the most friction." },
+    { label: "PROVE THE MOVE", prompt: "What evidence would make the next program decision easier to defend?", help: "Name an observable result, artifact, or test—not a general sense of progress." },
+  ],
+  ai: [
+    { label: "FRAME THE OPPORTUNITY", prompt: "What part of your work or life feels repetitive, fragmented, or harder than it should be?", help: "Start with the friction. Do not worry yet about which AI tool might solve it." },
+    { label: "FIND THE HUMAN", prompt: "Who feels this friction most—and what are they actually trying to accomplish?", help: "Name the outcome they need, not the app or system they happen to use." },
+    { label: "SEE THE ROUTINE", prompt: "Walk through what happens today. Where does judgment, waiting, searching, or rework enter?", help: "A rough sequence is enough. Include the moment where better assistance could matter." },
+    { label: "PROVE THE VALUE", prompt: "Thirty days from now, what evidence would show that an AI-assisted change was genuinely useful?", help: "Look for a visible change in time, quality, confidence, or effort." },
+  ],
+};
+
+const starterSets: Record<Track, string[]> = {
+  government: ["An acquisition decision", "Requirements overload", "Product delivery", "Program transformation"],
+  ai: ["A repeated workflow", "Something I want to build", "Too many tools", "A daily routine"],
+};
 
 export function FirstMoveInterview() {
   const [started, setStarted] = useState(false);
+  const [track, setTrack] = useState<Track | null>(null);
   const [step, setStep] = useState(0);
   const [draft, setDraft] = useState("");
   const [answers, setAnswers] = useState<string[]>([]);
   const [listening, setListening] = useState(false);
   const recognitionRef = useRef<InstanceType<SpeechRecognitionConstructor> | null>(null);
 
+  const questions = track ? questionSets[track] : sharedQuestions;
+  const starters = track ? starterSets[track] : [];
   const complete = step >= questions.length;
   const brief = useMemo(() => ({
     opportunity: answers[0] || "A workflow worth understanding",
     people: answers[1] || "The people closest to the work",
     firstMove: answers[2]
-      ? `Map the current sequence, then isolate one handoff where a small assisted workflow can be tested without removing human judgment. Start with: ${answers[2]}`
-      : "Map the current sequence and isolate one low-risk handoff to test.",
+      ? track === "government"
+        ? `Turn the current sequence into a decision map, then isolate the assumption that needs evidence before the program commits. Start with: ${answers[2]}`
+        : `Map the current sequence, then isolate one handoff where a small assisted workflow can be tested without removing human judgment. Start with: ${answers[2]}`
+      : "Map the current sequence and isolate one low-risk move to test.",
     evidence: answers[3] || "A visible improvement in time, quality, confidence, or rework",
-  }), [answers]);
+  }), [answers, track]);
 
   function toggleVoice() {
     if (listening) {
@@ -90,6 +115,7 @@ export function FirstMoveInterview() {
 
   function restart() {
     setStarted(false);
+    setTrack(null);
     setStep(0);
     setDraft("");
     setAnswers([]);
@@ -106,15 +132,19 @@ export function FirstMoveInterview() {
       {!started ? (
         <section className="os-intro">
           <div className="os-intro-copy">
-            <p className="eyebrow"><span className="live-dot"></span> PROTOTYPE INTERVIEW</p>
-            <h1>Bring the thing<br />you can&apos;t quite<br /><em>frame yet.</em></h1>
-            <p>Four focused questions. About three minutes. A practical first move shaped by how Mitten thinks about people, products, evidence, and AI.</p>
-            <button className="os-primary" onClick={() => setStarted(true)}>Start the interview <span>→</span></button>
+            <p className="eyebrow"><span className="live-dot"></span> CHOOSE YOUR FIRST MOVE</p>
+            <h1>What kind of work<br /><em>brought you here?</em></h1>
+            <p>The same product discipline, tailored to two different jobs. Choose a path for four focused questions and a practical place to begin.</p>
+            <div className="track-choices">
+              <button onClick={() => { setTrack("government"); setStarted(true); }}><span>01</span><strong>Government ProductOps</strong><small>Programs, acquisition, requirements, delivery</small><i>→</i></button>
+              <button onClick={() => { setTrack("ai"); setStarted(true); }}><span>02</span><strong>Practical AI</strong><small>Build, optimize, integrate, learn</small><i>→</i></button>
+            </div>
             <small>Use your voice or type. This prototype does not save your answers.</small>
           </div>
-          <div className="os-map" aria-label="Interview process">
-            <div className="os-map-head"><span>THE INTERVIEW</span><span>04 MOVES</span></div>
-            {questions.map((question, index) => <div className="os-map-row" key={question.label}><span>0{index + 1}</span><strong>{question.label}</strong></div>)}
+          <div className="os-map track-map" aria-label="First Move paths">
+            <div className="os-map-head"><span>MITTEN / FIRST MOVE</span><span>02 PATHS</span></div>
+            <p className="track-map-statement">Different context.<br /><strong>Same standard.</strong></p>
+            <div className="track-principles"><span>START WITH THE OUTCOME</span><span>PRESERVE HUMAN JUDGMENT</span><span>COLLECT EVIDENCE</span><span>MAKE ONE USEFUL MOVE</span></div>
             <p>Not a chatbot. A structured way to find the next useful question.</p>
           </div>
         </section>
@@ -146,7 +176,7 @@ export function FirstMoveInterview() {
             <span>{questions[step].label}</span>
           </div>
           <div className="interview-question">
-            <p className="eyebrow">MITTEN ASKS</p>
+            <p className="eyebrow">MITTEN ASKS / {track === "government" ? "GOVERNMENT" : "PRACTICAL AI"}</p>
             <h1>{questions[step].prompt}</h1>
             <p>{questions[step].help}</p>
           </div>
