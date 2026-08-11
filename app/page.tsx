@@ -32,17 +32,22 @@ export default function Home() {
         <section className="pathways wrap" id="choose">
           <header className="pathways-head">
             <p className="section-label">CHOOSE THE WORK</p>
-            <p>The disciplines overlap. The jobs, language, and evidence do not.</p>
           </header>
           <div className="pathway-grid">
             <a className="pathway-card government-path" href="/government/">
               <span>01 / GOVERNMENT PRODUCTOPS</span>
+              <div className="pathway-visual mission-visual" aria-hidden="true">
+                <span>MISSION</span><i /><span>DECISION</span><i /><span>DELIVERY</span>
+              </div>
               <h2>Move a complex mission forward.</h2>
               <p>For government programs and contractors navigating acquisition, requirements, delivery, and organizational change.</p>
               <strong>Explore government work <i>→</i></strong>
             </a>
             <a className="pathway-card ai-path" href="/ai/">
               <span>02 / PRACTICAL AI</span>
+              <div className="pathway-visual ai-visual" aria-hidden="true">
+                <span>HUMAN</span><i /><span>WORKFLOW</span><i /><span>AI</span>
+              </div>
               <h2>Make AI useful in real life.</h2>
               <p>For organizations and people who want to build with AI, improve a workflow, or integrate it into everyday work and life.</p>
               <strong>Explore practical AI <i>→</i></strong>
