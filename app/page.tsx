@@ -110,7 +110,7 @@ export default function Home() {
           <div className="booking-copy">
             <p className="section-label">START A CONVERSATION</p>
             <h2>Thirty minutes with the person doing the work.</h2>
-            <p>Bring a problem. Ben will help sharpen the decision and identify a useful next move.</p>
+            <p>Bring a problem. Mitten will help sharpen the decision and identify a useful next move.</p>
           </div>
           <div className="booking-panel">
             {bookingUrl ? (
@@ -120,7 +120,7 @@ export default function Home() {
                 <span>MITTEN / INTRO CONVERSATION</span>
                 <strong>Google Calendar booking is being connected.</strong>
                 <p>Until the live calendar is in place, send a note and we’ll find a time.</p>
-                <a className="solid-button" href="mailto:ben@mitten.consulting?subject=Mitten%20intro%20conversation">Email Ben <span>↗</span></a>
+                <a className="solid-button" href="mailto:ben@mitten.consulting?subject=Mitten%20intro%20conversation">Email Mitten <span>↗</span></a>
               </div>
             )}
           </div>
@@ -131,7 +131,7 @@ export default function Home() {
         <div className="wrap footer-grid">
           <div><BrandLogo reversed /></div>
           <nav aria-label="Footer navigation"><a href="/government/">Government</a><a href="/ai/">Practical AI</a><a href="/first-move/">First Move</a><a href="/privacy/">Privacy</a></nav>
-          <div className="footer-contact"><a href="mailto:ben@mitten.consulting">ben@mitten.consulting</a><span>Nashville, Tennessee</span></div>
+          <div className="footer-contact"><a href="mailto:ben@mitten.consulting">Contact Mitten</a><span>Nashville, Tennessee</span></div>
           <div className="footer-bottom"><span>© 2026 Mitten LLC</span></div>
         </div>
       </footer>

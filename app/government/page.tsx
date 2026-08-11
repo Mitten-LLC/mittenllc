@@ -29,9 +29,9 @@ export default function GovernmentPage() {
             <article><span>03</span><h3>Change how the program works</h3><p>Build ProductOps rhythms around the people already delivering the mission, without importing a commercial playbook wholesale.</p><small>OPERATING MODEL · ENABLEMENT</small></article>
           </div>
         </section>
-        <section className="lane-close"><div className="wrap"><p className="section-label">THE STANDARD</p><h2>Product discipline that survives<br /><em>contact with government reality.</em></h2><a className="outline-button" href="/#book">Talk with Ben <span>→</span></a></div></section>
+        <section className="lane-close"><div className="wrap"><p className="section-label">THE STANDARD</p><h2>Product discipline that survives<br /><em>contact with government reality.</em></h2><a className="outline-button" href="/#book">Talk with Mitten <span>→</span></a></div></section>
       </main>
-      <footer className="home-footer"><div className="wrap footer-grid"><div><BrandLogo reversed /></div><nav><a href="/">Home</a><a href="/ai/">Practical AI</a><a href="/first-move/">First Move</a></nav><div className="footer-contact"><a href="mailto:ben@mitten.consulting">ben@mitten.consulting</a><span>Nashville, Tennessee</span></div></div></footer>
+      <footer className="home-footer"><div className="wrap footer-grid"><div><BrandLogo reversed /></div><nav><a href="/">Home</a><a href="/ai/">Practical AI</a><a href="/first-move/">First Move</a></nav><div className="footer-contact"><a href="mailto:ben@mitten.consulting">Contact Mitten</a><span>Nashville, Tennessee</span></div></div></footer>
     </div>
   );
 }

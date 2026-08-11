@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { Fraunces, Geist_Mono, Inter } from "next/font/google";
+import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 
 const sans = Inter({ variable: "--font-site-sans", subsets: ["latin"], display: "swap" });
 const display = Fraunces({ variable: "--font-site-display", subsets: ["latin"], display: "swap" });
-const mono = Geist_Mono({ variable: "--font-site-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mitten.consulting"),
@@ -25,5 +24,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body className={`${sans.variable} ${display.variable} ${mono.variable}`}>{children}</body></html>;
+  return <html lang="en"><body className={`${sans.variable} ${display.variable}`}>{children}</body></html>;
 }
