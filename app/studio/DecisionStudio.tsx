@@ -180,6 +180,8 @@ export function DecisionStudio() {
   const [draft, setDraft] = useState("");
   const [analysisStep, setAnalysisStep] = useState(0);
   const [listening, setListening] = useState(false);
+  const [ownerRole, setOwnerRole] = useState("");
+  const [reviewDate, setReviewDate] = useState("");
   const recognitionRef = useRef<InstanceType<SpeechRecognitionConstructor> | null>(null);
   const briefTitleRef = useRef<HTMLHeadingElement>(null);
 
@@ -238,12 +240,62 @@ export function DecisionStudio() {
     setSampleId(resolvedLane ? samples[resolvedLane][0].id : "");
     setDraft("");
     setAnalysisStep(0);
+    setOwnerRole("");
+    setReviewDate("");
+  }
+
+  function briefMarkdown() {
+    if (!brief || !lane) return "";
+    const risks = riskKeys.map((key) => `${key.toUpperCase()}${brief.strongestRisk === key ? " (STRONGEST)" : ""}: ${brief.risks[key]}`).join("\n");
+    return `# Mitten Product Discovery Brief
+
+## The job
+${jtbdSentence(brief.jtbd)}
+
+## Desired outcome
+${brief.outcome}
+
+## Current workaround
+${brief.workaround}
+
+## Four-risk read
+${risks}
+
+## Key assumption
+${brief.assumption}
+
+## Smallest test
+${brief.test}
+
+## Evidence to collect
+${brief.evidence}
+
+## Put it into motion
+**Accountable role:** ${ownerRole || "Assign before starting"}
+**Evidence review:** ${reviewDate || "Set before starting"}
+
+1. Assign one role to own the ${riskCopy[lane][brief.strongestRisk].label.toLowerCase()} risk.
+2. ${brief.test}
+3. Review this evidence${reviewDate ? ` on ${reviewDate}` : " on the agreed date"}: ${brief.evidence}
+
+**Decision gate:** Do not scale or commit further delivery until the strongest risk has evidence.
+`;
   }
 
   function copyBrief() {
-    if (!brief) return;
-    const risks = riskKeys.map((key) => `${key.toUpperCase()}${brief.strongestRisk === key ? " (STRONGEST)" : ""}: ${brief.risks[key]}`).join("\n");
-    navigator.clipboard.writeText(`MITTEN PRODUCT DISCOVERY BRIEF\n\nTHE JOB\n${jtbdSentence(brief.jtbd)}\n\nDESIRED OUTCOME\n${brief.outcome}\n\nCURRENT WORKAROUND\n${brief.workaround}\n\nFOUR-RISK READ\n${risks}\n\nKEY ASSUMPTION\n${brief.assumption}\n\nSMALLEST TEST\n${brief.test}\n\nEVIDENCE TO COLLECT\n${brief.evidence}`);
+    navigator.clipboard.writeText(briefMarkdown());
+  }
+
+  function downloadBrief() {
+    const blob = new Blob([briefMarkdown()], { type: "text/markdown;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `mitten-product-discovery-brief-${lane || "draft"}.md`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
   }
 
   return (
@@ -330,7 +382,20 @@ export function DecisionStudio() {
             <div className="studio-brief-item"><span>KEY ASSUMPTION</span><p>{brief.assumption}</p></div>
             <div className="studio-brief-item"><span>SMALLEST TEST</span><p>{brief.test}</p></div>
             <div className="studio-brief-item"><span>EVIDENCE TO COLLECT</span><p>{brief.evidence}</p></div>
-            <div className="studio-brief-actions"><button onClick={copyBrief}>Copy brief</button><a href="/#book">Talk it through ↗</a></div>
+            <div className="studio-action-card">
+              <div className="studio-action-head"><span>PUT IT INTO MOTION</span><strong>DO THIS NEXT</strong></div>
+              <div className="studio-action-fields">
+                <label><span>ACCOUNTABLE ROLE</span><input value={ownerRole} onChange={(event) => setOwnerRole(event.target.value)} maxLength={80} placeholder="Program manager, product lead…" /></label>
+                <label><span>EVIDENCE REVIEW</span><input type="date" value={reviewDate} onChange={(event) => setReviewDate(event.target.value)} /></label>
+              </div>
+              <ol className="studio-action-list">
+                <li><b>01</b><p>Assign one role to own the <strong>{riskCopy[lane][brief.strongestRisk].label.toLowerCase()} risk</strong>.</p></li>
+                <li><b>02</b><p>{brief.test}</p></li>
+                <li><b>03</b><p>Review the evidence{reviewDate ? ` on ${reviewDate}` : " on the agreed date"}: {brief.evidence}</p></li>
+              </ol>
+              <p className="studio-decision-gate"><b>DECISION GATE</b> Do not scale or commit further delivery until the strongest risk has evidence.</p>
+            </div>
+            <div className="studio-brief-actions"><button onClick={copyBrief}>Copy brief</button><button onClick={downloadBrief}>Download .md</button><button onClick={() => window.print()}>Print / save PDF</button><a href="/#book">Talk it through ↗</a></div>
           </article>
         </section>
       )}
