@@ -165,18 +165,9 @@
 .government-symbol i:nth-child(3) { left:0; bottom:0; border-width:0 0 4px 4px; }
 .government-symbol i:nth-child(4) { right:0; bottom:0; border-width:0 4px 4px 0; }
 .government-symbol b { width:58px; height:58px; position:absolute; left:63px; top:63px; background:var(--home-maize); transform:rotate(45deg); }
-.product-symbol { transform:rotate(45deg); }
-.product-symbol i { position:absolute; display:block; background:var(--home-navy); }
-.product-symbol i:nth-child(1), .product-symbol i:nth-child(3) { width:70px; height:4px; top:90px; }
-.product-symbol i:nth-child(1) { left:0; }
-.product-symbol i:nth-child(3) { right:0; }
-.product-symbol i:nth-child(2), .product-symbol i:nth-child(4) { width:4px; height:70px; left:90px; }
-.product-symbol i:nth-child(2) { top:0; }
-.product-symbol i:nth-child(4) { bottom:0; }
-.product-symbol b { width:66px; height:66px; position:absolute; left:59px; top:59px; border:4px solid var(--home-navy); background:var(--home-maize); box-shadow:inset 0 0 0 15px var(--home-ice); }
-.product-symbol::before, .product-symbol::after { content:""; position:absolute; border:4px solid var(--home-navy); }
-.product-symbol::before { width:118px; height:118px; left:33px; top:33px; }
-.product-symbol::after { width:14px; height:14px; left:85px; top:85px; background:var(--home-navy); }
+.product-symbol { border:4px solid var(--home-navy); border-radius:50%; }
+.product-symbol i { width:72px; height:36px; position:absolute; left:52px; top:72px; border:4px solid var(--home-navy); border-top:0; border-left-color:transparent; border-right-color:transparent; border-radius:0 0 72px 72px; }
+.product-symbol b { width:22px; height:22px; position:absolute; right:30px; top:28px; background:var(--home-maize); border:4px solid var(--home-navy); border-radius:50%; box-shadow:-102px 102px 0 -4px var(--home-maize),-102px 102px 0 0 var(--home-navy); }
 .pathway-card h3 { margin:0; font:680 clamp(48px,5vw,72px)/.88 var(--display); letter-spacing:-.052em; }
 .pathway-card h3 em { color:var(--home-maize); font-weight:560; }
 .ai-path h3 em { color:var(--home-navy); text-decoration:underline; text-decoration-color:var(--home-maize); text-decoration-thickness:.11em; text-underline-offset:.1em; }
@@ -185,7 +176,7 @@
 .government-path > span { color: var(--home-maize); }
 .ai-path { background: var(--home-ice); }
 .pathway-card:hover .pathway-symbol { transform:rotate(4deg) scale(1.04); }
-.pathway-card:hover .product-symbol { transform:rotate(49deg) scale(1.04); }
+.pathway-card:hover .product-symbol { transform:rotate(4deg) scale(1.04); }
 .pathway-card:hover .pathway-arrow { transform:translate(5px,-5px); }
 .point-of-view { background: var(--home-maize); border-block: 1px solid var(--home-navy); }
 .point-grid { padding-block: 58px 48px; display: grid; grid-template-columns: .35fr 1.65fr; gap: 45px 50px; align-items: center; }
@@ -325,11 +316,8 @@
   .pathway-card + .pathway-card { border-left: 0; border-top: 1px solid var(--home-navy); }
   .pathway-symbol { width:145px; height:145px; }
   .government-symbol b { width:45px; height:45px; left:50px; top:50px; }
-  .product-symbol i:nth-child(1), .product-symbol i:nth-child(3) { width:55px; top:71px; }
-  .product-symbol i:nth-child(2), .product-symbol i:nth-child(4) { height:55px; left:71px; }
-  .product-symbol b { width:54px; height:54px; left:45px; top:45px; box-shadow:inset 0 0 0 12px var(--home-ice); }
-  .product-symbol::before { width:94px; height:94px; left:25px; top:25px; }
-  .product-symbol::after { width:12px; height:12px; left:66px; top:66px; }
+  .product-symbol i { width:58px; height:29px; left:39px; top:57px; }
+  .product-symbol b { width:19px; height:19px; right:23px; top:21px; box-shadow:-80px 80px 0 -4px var(--home-maize),-80px 80px 0 0 var(--home-navy); }
   .pathway-card h3 { font-size:52px; }
   .pathway-arrow { right:25px; bottom:25px; }
 }
