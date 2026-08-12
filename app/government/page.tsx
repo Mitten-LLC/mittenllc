@@ -11,14 +11,14 @@ export default function GovernmentPage() {
     <div className="lane-page government-lane">
       <header className="home-header wrap">
         <a href="/" aria-label="Mitten home"><BrandLogo /></a>
-        <nav aria-label="Main navigation"><a href="/">Home</a><a href="/ai/">Practical AI</a><a href="/first-move/">First Move</a><a className="nav-book" href="/#book">Book a conversation <span>↗</span></a></nav>
+        <nav aria-label="Main navigation"><a href="/">Home</a><a href="/ai/">Practical AI</a><a href="/studio/?lane=government">Requirements X-Ray</a><a href="/first-move/">First Move</a><a className="nav-book" href="/#book">Book a conversation <span>↗</span></a></nav>
       </header>
       <main>
         <section className="lane-hero wrap">
           <p className="kicker"><span /> Government ProductOps</p>
           <h1>The plan underneath<br /><em>a thousand requirements.</em></h1>
           <p>Mitten turns acquisition complexity, user needs, and delivery constraints into decisions a program can defend—and work a team can execute.</p>
-          <div className="home-actions"><a className="solid-button" href="/first-move/">Start a government First Move <span>→</span></a><a className="quiet-link" href="#government-work">See the work <span>↓</span></a></div>
+          <div className="home-actions"><a className="solid-button" href="/studio/?lane=government">Run a Requirements X-Ray <span>→</span></a><a className="quiet-link" href="/first-move/">Start a guided First Move <span>↗</span></a></div>
         </section>
         <section className="lane-proof"><div className="wrap"><span>BUILT FOR</span><strong>Program offices</strong><strong>Acquisition teams</strong><strong>Government contractors</strong><strong>Mission users</strong></div></section>
         <section className="lane-jobs wrap" id="government-work">
@@ -29,9 +29,9 @@ export default function GovernmentPage() {
             <article><span>03</span><h3>Change how the program works</h3><p>Build ProductOps rhythms around the people already delivering the mission, without importing a commercial playbook wholesale.</p><small>OPERATING MODEL · ENABLEMENT</small></article>
           </div>
         </section>
-        <section className="lane-close"><div className="wrap"><p className="section-label">THE STANDARD</p><h2>Product discipline that survives<br /><em>contact with government reality.</em></h2><a className="outline-button" href="/#book">Talk with Mitten <span>→</span></a></div></section>
+        <section className="lane-close"><div className="wrap"><p className="section-label">THE STANDARD</p><h2>Product discipline that survives<br /><em>contact with government reality.</em></h2><div className="home-actions"><a className="outline-button" href="/studio/?lane=government">Run the Requirements X-Ray <span>→</span></a><a className="quiet-link" href="/#book">Talk with Mitten <span>↗</span></a></div></div></section>
       </main>
-      <footer className="home-footer"><div className="wrap footer-grid"><div><BrandLogo reversed /></div><nav><a href="/">Home</a><a href="/ai/">Practical AI</a><a href="/first-move/">First Move</a></nav><div className="footer-contact"><a href="mailto:ben@mitten.consulting">Contact Mitten</a><span>Nashville, Tennessee</span></div></div></footer>
+      <footer className="home-footer"><div className="wrap footer-grid"><div><BrandLogo reversed /></div><nav><a href="/">Home</a><a href="/ai/">Practical AI</a><a href="/studio/?lane=government">Requirements X-Ray</a><a href="/first-move/">First Move</a></nav><div className="footer-contact"><a href="mailto:ben@mitten.consulting">Contact Mitten</a><span>Nashville, Tennessee</span></div></div></footer>
     </div>
   );
 }

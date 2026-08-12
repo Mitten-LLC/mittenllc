@@ -10,6 +10,7 @@ export default function Home() {
         <nav aria-label="Main navigation">
           <a href="/government/">Government</a>
           <a href="/ai/">Practical AI</a>
+          <a href="/studio/">X-Ray</a>
           <a href="/first-move/">First Move</a>
           <a className="nav-book" href="#book">Book a conversation <span aria-hidden="true">↗</span></a>
         </nav>
@@ -34,24 +35,32 @@ export default function Home() {
             <p className="section-label">CHOOSE THE WORK</p>
           </header>
           <div className="pathway-grid">
-            <a className="pathway-card government-path" href="/government/">
+            <article className="pathway-card government-path">
               <span>01 / GOVERNMENT PRODUCTOPS</span>
-              <div className="pathway-visual mission-visual" aria-hidden="true">
-                <span>MISSION</span><i /><span>DECISION</span><i /><span>DELIVERY</span>
+              <div className="pathway-product-preview mission-preview" aria-hidden="true">
+                <div className="product-preview-top"><span>REQUIREMENTS X-RAY</span><span>CASE M-2048</span></div>
+                <div className="product-preview-body">
+                  <strong>340 requirements.<br />One decision underneath.</strong>
+                  <div className="product-preview-risk"><i>STRONGEST RISK</i><b>VIABILITY</b><small>Authority · funding · compliance</small></div>
+                </div>
               </div>
               <h2>Move a complex mission forward.</h2>
               <p>For program offices and contractors working through acquisition, requirements, delivery, or organizational change.</p>
-              <strong>Explore government work <i>→</i></strong>
-            </a>
-            <a className="pathway-card ai-path" href="/ai/">
+              <div className="pathway-actions"><a href="/government/">Explore government work <span>→</span></a><a className="pathway-xray" href="/studio/?lane=government">Run the X-Ray <span>↗</span></a></div>
+            </article>
+            <article className="pathway-card ai-path">
               <span>02 / PRACTICAL AI</span>
-              <div className="pathway-visual ai-visual" aria-hidden="true">
-                <span>HUMAN</span><i /><span>WORKFLOW</span><i /><span>AI</span>
+              <div className="pathway-product-preview ai-preview" aria-hidden="true">
+                <div className="product-preview-top"><span>WORKFLOW X-RAY</span><span>03:00 MIN</span></div>
+                <div className="product-preview-body">
+                  <strong>Get Friday<br />back.</strong>
+                  <div className="product-preview-risk"><i>SMALLEST TEST</i><b>ONE HANDOFF</b><small>Time saved · corrections required</small></div>
+                </div>
               </div>
               <h2>Get AI doing real work.</h2>
               <p>For teams and individuals ready to build, fix a workflow, or finally make a tool stick.</p>
-              <strong>Explore practical AI <i>→</i></strong>
-            </a>
+              <div className="pathway-actions"><a href="/ai/">Explore practical AI <span>→</span></a><a className="pathway-xray" href="/studio/?lane=ai">Run the X-Ray <span>↗</span></a></div>
+            </article>
           </div>
         </section>
 
@@ -130,7 +139,7 @@ export default function Home() {
       <footer className="home-footer">
         <div className="wrap footer-grid">
           <div><BrandLogo reversed /></div>
-          <nav aria-label="Footer navigation"><a href="/government/">Government</a><a href="/ai/">Practical AI</a><a href="/first-move/">First Move</a><a href="/privacy/">Privacy</a></nav>
+          <nav aria-label="Footer navigation"><a href="/government/">Government</a><a href="/ai/">Practical AI</a><a href="/studio/">X-Ray</a><a href="/first-move/">First Move</a><a href="/privacy/">Privacy</a></nav>
           <div className="footer-contact"><a href="mailto:ben@mitten.consulting">Contact Mitten</a><span>Nashville, Tennessee</span></div>
           <div className="footer-bottom"><span>© 2026 Mitten LLC</span></div>
         </div>

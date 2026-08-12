@@ -185,6 +185,7 @@ export function DecisionStudio() {
   const [openedDate, setOpenedDate] = useState("");
   const recognitionRef = useRef<InstanceType<SpeechRecognitionConstructor> | null>(null);
   const briefTitleRef = useRef<HTMLHeadingElement>(null);
+  const deepLinkHandledRef = useRef(false);
 
   const selectedSample = lane ? samples[lane].find((sample) => sample.id === sampleId) : undefined;
   const source = inputMode === "sample" ? selectedSample?.body || "" : draft;
@@ -194,6 +195,11 @@ export function DecisionStudio() {
   useEffect(() => {
     setCaseNumber(`M-${Math.floor(1000 + Math.random() * 9000)}`);
     setOpenedDate(new Date().toLocaleDateString("en-US", { month: "short", day: "2-digit", year: "numeric" }).toUpperCase());
+    if (!deepLinkHandledRef.current) {
+      deepLinkHandledRef.current = true;
+      const requestedLane = new URLSearchParams(window.location.search).get("lane");
+      if (requestedLane === "government" || requestedLane === "ai") selectLane(requestedLane);
+    }
   }, []);
 
   useEffect(() => {
