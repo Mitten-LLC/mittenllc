@@ -1,0 +1,3 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="46" viewBox="0 0 250 64" role="img" aria-label="Mitten">
+  <path d="M2 5c15 1 25 10 28 25l4 29c-6-10-10-20-13-31C18 17 10 9 2 5Z" fill="#ffcb05"/><path d="M66 5C51 6 41 15 38 30l-4 29c6-10 10-20 13-31C50 17 58 9 66 5Z" fill="#ffcb05"/><path d="M4 13c9 12 13 27 13 43h12C26 40 19 24 4 13Z" fill="#071d3a"/><path d="M64 13C55 25 51 40 51 56H39c3-16 10-32 25-43Z" fill="#071d3a"/><text x="79" y="49" fill="#071d3a" font-family="Geist, Inter, Arial, sans-serif" font-size="46" font-weight="700" letter-spacing="-2.6">itten</text><circle cx="87" cy="10" r="4.5" fill="#ffcb05"/>
+</svg>

@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.DS_Store
+.wrangler/
+.next/
+.vercel/
+*.tsbuildinfo
+.vinext/
+.playwright-cli/
+output/playwright/
+.vercel/
+.env.local
+.env.*.local
