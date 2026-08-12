@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import source from "../../training/index.html?raw";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { ClientEnhancements } from "../ClientEnhancements";
 
 export const metadata: Metadata = {
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   description: "Practical AI training for people doing complex, consequential work.",
 };
 
+const source = readFileSync(join(process.cwd(), "training/index.html"), "utf8");
 const body = source.match(/<body[^>]*>([\s\S]*?)<\/body>/i)?.[1]
   .replace(/<script[\s\S]*?<\/script>/gi, "") ?? "";
 
