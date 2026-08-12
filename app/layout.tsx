@@ -13,13 +13,21 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Mitten — Start with the work",
     description: "Government ProductOps and practical AI adoption, shaped around the work that needs to move.",
-    images: ["https://mitten-ai.mittensix.chatgpt.site/og-two-paths.png"],
+    url: "https://mitten.consulting",
+    siteName: "Mitten",
+    type: "website",
+    images: [{
+      url: "/og.png",
+      width: 1200,
+      height: 630,
+      alt: "Mitten — Find the next useful move.",
+    }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Mitten — Start with the work",
     description: "Government ProductOps and practical AI adoption, shaped around the work that needs to move.",
-    images: ["https://mitten-ai.mittensix.chatgpt.site/og-two-paths.png"],
+    images: ["/og.png"],
   },
 };
 
