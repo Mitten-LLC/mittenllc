@@ -35,14 +35,14 @@ export default function Home() {
           </header>
           <div className="pathway-grid">
             <a className="pathway-card government-path" href="/government/">
-              <span>01</span>
+              <span>01 / GOVERNMENT</span>
               <div className="pathway-symbol government-symbol" aria-hidden="true"><i /><i /><i /><i /><b /></div>
-              <h3>Government<br /><em>ProductOps</em></h3>
+              <h3>Product<br /><em>Ops</em></h3>
               <b className="pathway-arrow" aria-hidden="true">↗</b>
             </a>
             <a className="pathway-card ai-path" href="/ai/">
               <span>02 / PRACTICAL AI</span>
-              <div className="pathway-symbol product-symbol" aria-hidden="true"><i /><b /></div>
+              <div className="pathway-symbol product-symbol" aria-hidden="true"><i /><i /><i /><i /><b /></div>
               <h3>Make life<br /><em>easier.</em></h3>
               <b className="pathway-arrow" aria-hidden="true">↗</b>
             </a>
