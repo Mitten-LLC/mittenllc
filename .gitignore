@@ -8,3 +8,6 @@ dist/
 .vinext/
 .playwright-cli/
 output/playwright/
+.vercel/
+.env.local
+.env.*.local
