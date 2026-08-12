@@ -165,11 +165,12 @@
 .government-symbol i:nth-child(3) { left:0; bottom:0; border-width:0 0 4px 4px; }
 .government-symbol i:nth-child(4) { right:0; bottom:0; border-width:0 4px 4px 0; }
 .government-symbol b { width:58px; height:58px; position:absolute; left:63px; top:63px; background:var(--home-maize); transform:rotate(45deg); }
-.product-symbol { border:4px solid var(--home-navy); border-radius:50%; }
-.product-symbol i { width:92px; height:92px; position:absolute; border:4px solid var(--home-navy); border-radius:50%; }
-.product-symbol i:first-child { left:-27px; top:43px; background:var(--home-ice); }
-.product-symbol i:nth-child(2) { right:-27px; top:43px; background:var(--home-maize); }
-.product-symbol b { width:38px; height:38px; position:absolute; left:69px; top:69px; z-index:2; background:var(--home-navy); border-radius:50%; }
+.product-symbol { border:4px solid var(--home-navy); background:linear-gradient(90deg,transparent 0 49%,var(--home-navy) 49% 51%,transparent 51%); }
+.product-symbol i { position:absolute; display:block; }
+.product-symbol i:first-child { width:42px; height:42px; left:-23px; top:67px; border:4px solid var(--home-navy); border-radius:50%; background:var(--home-maize); }
+.product-symbol i:nth-child(2) { width:74px; height:4px; left:17px; top:86px; background:var(--home-navy); }
+.product-symbol i:nth-child(3) { width:88px; height:88px; right:-33px; top:44px; border:4px solid var(--home-navy); background:var(--home-maize); transform:rotate(45deg); }
+.product-symbol b { width:34px; height:34px; position:absolute; right:-6px; top:71px; z-index:2; border:4px solid var(--home-navy); background:var(--home-ice); transform:rotate(45deg); }
 .pathway-card h3 { margin:0; font:680 clamp(48px,5vw,72px)/.88 var(--display); letter-spacing:-.052em; }
 .pathway-card h3 em { color:var(--home-maize); font-weight:560; }
 .ai-path h3 em { color:var(--home-navy); text-decoration:underline; text-decoration-color:var(--home-maize); text-decoration-thickness:.11em; text-underline-offset:.1em; }
@@ -317,10 +318,10 @@
   .pathway-card + .pathway-card { border-left: 0; border-top: 1px solid var(--home-navy); }
   .pathway-symbol { width:145px; height:145px; }
   .government-symbol b { width:45px; height:45px; left:50px; top:50px; }
-  .product-symbol i { width:74px; height:74px; top:32px; }
-  .product-symbol i:first-child { left:-22px; }
-  .product-symbol i:nth-child(2) { right:-22px; }
-  .product-symbol b { width:30px; height:30px; left:54px; top:54px; }
+  .product-symbol i:first-child { width:35px; height:35px; left:-20px; top:51px; }
+  .product-symbol i:nth-child(2) { width:60px; left:14px; top:68px; }
+  .product-symbol i:nth-child(3) { width:70px; height:70px; right:-28px; top:33px; }
+  .product-symbol b { width:29px; height:29px; right:-6px; top:55px; }
   .pathway-card h3 { font-size:52px; }
   .pathway-arrow { right:25px; bottom:25px; }
 }

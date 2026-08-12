@@ -42,7 +42,7 @@ export default function Home() {
             </a>
             <a className="pathway-card ai-path" href="/ai/">
               <span>02</span>
-              <div className="pathway-symbol product-symbol" aria-hidden="true"><i /><i /><b /></div>
+              <div className="pathway-symbol product-symbol" aria-hidden="true"><i /><i /><i /><b /></div>
               <h3>Practical<br /><em>AI</em></h3>
               <b className="pathway-arrow" aria-hidden="true">↗</b>
             </a>
