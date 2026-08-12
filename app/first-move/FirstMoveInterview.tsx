@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 type SpeechRecognitionConstructor = new () => {
   continuous: boolean;
@@ -14,6 +14,17 @@ type SpeechRecognitionConstructor = new () => {
 };
 
 type Track = "government" | "ai";
+type RiskKey = "value" | "usability" | "feasibility" | "viability";
+type AnalysisBrief = {
+  jtbd: { when: string; need: string; soThat: string };
+  outcome: string;
+  workaround: string;
+  risks: Record<RiskKey, string>;
+  strongestRisk: RiskKey;
+  assumption: string;
+  test: string;
+  evidence: string;
+};
 
 const sharedQuestions = [
   {
@@ -65,21 +76,15 @@ export function FirstMoveInterview() {
   const [draft, setDraft] = useState("");
   const [answers, setAnswers] = useState<string[]>([]);
   const [listening, setListening] = useState(false);
+  const [brief, setBrief] = useState<AnalysisBrief | null>(null);
+  const [synthesizing, setSynthesizing] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const recognitionRef = useRef<InstanceType<SpeechRecognitionConstructor> | null>(null);
 
   const questions = track ? questionSets[track] : sharedQuestions;
   const starters = track ? starterSets[track] : [];
   const complete = step >= questions.length;
-  const brief = useMemo(() => ({
-    opportunity: answers[0] || "A workflow worth understanding",
-    people: answers[1] || "The people closest to the work",
-    firstMove: answers[2]
-      ? track === "government"
-        ? `Turn the current sequence into a decision map, then isolate the assumption that needs evidence before the program commits. Start with: ${answers[2]}`
-        : `Map the current sequence, then isolate one handoff where a small assisted workflow can be tested without removing human judgment. Start with: ${answers[2]}`
-      : "Map the current sequence and isolate one low-risk move to test.",
-    evidence: answers[3] || "A visible improvement in time, quality, confidence, or rework",
-  }), [answers, track]);
+  const jobSentence = brief ? `When ${brief.jtbd.when}, I need to ${brief.jtbd.need}, so that ${brief.jtbd.soThat}.` : "";
 
   function toggleVoice() {
     if (listening) {
@@ -106,11 +111,35 @@ export function FirstMoveInterview() {
     recognition.start();
   }
 
+  async function synthesizeBrief(finalAnswers: string[]) {
+    if (!track) return;
+    setSynthesizing(true);
+    setErrorMessage("");
+    const source = questionSets[track].map((question, index) => `${question.label}\nQuestion: ${question.prompt}\nAnswer: ${finalAnswers[index]}`).join("\n\n");
+    try {
+      const response = await fetch("/api/analyze", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ lane: track, experience: "interview", source, allowFollowUp: false }),
+      });
+      const data = await response.json() as { brief?: AnalysisBrief; error?: string };
+      if (!response.ok) throw new Error(data.error || "The brief could not be completed.");
+      if (!data.brief) throw new Error("The interview did not return a usable brief.");
+      setBrief(data.brief);
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : "The brief could not be completed.");
+    } finally {
+      setSynthesizing(false);
+    }
+  }
+
   function submitAnswer() {
     if (!draft.trim()) return;
-    setAnswers((current) => [...current, draft.trim()]);
+    const finalAnswers = [...answers, draft.trim()];
+    setAnswers(finalAnswers);
     setDraft("");
     setStep((current) => current + 1);
+    if (step === questions.length - 1) void synthesizeBrief(finalAnswers);
   }
 
   function restart() {
@@ -119,6 +148,9 @@ export function FirstMoveInterview() {
     setStep(0);
     setDraft("");
     setAnswers([]);
+    setBrief(null);
+    setSynthesizing(false);
+    setErrorMessage("");
   }
 
   return (
@@ -146,21 +178,36 @@ export function FirstMoveInterview() {
             <div className="track-principles"><span>START WITH THE OUTCOME</span><span>PRESERVE HUMAN JUDGMENT</span><span>COLLECT EVIDENCE</span><span>MAKE ONE USEFUL MOVE</span></div>
           </div>
         </section>
-      ) : complete ? (
+      ) : complete && synthesizing ? (
+        <section className="brief-loading" aria-live="polite">
+          <span>MITTEN / SYNTHESIS</span>
+          <h1>Turning four answers<br /><em>into one useful move.</em></h1>
+          <p>One bounded model call. No answers are saved by Mitten.</p>
+          <div className="brief-loading-rule"><i /></div>
+        </section>
+      ) : complete && errorMessage ? (
+        <section className="studio-error interview-error">
+          <span className="studio-case-status is-error">BRIEF NOT PROCESSED</span>
+          <h1>The synthesis didn&apos;t go through.</h1>
+          <p>{errorMessage}</p>
+          <div className="studio-clarify-actions"><button className="continue-button" onClick={() => synthesizeBrief(answers)}>Try again <span>→</span></button><button className="studio-clarify-skip" onClick={restart}>Start over</button></div>
+        </section>
+      ) : complete && brief ? (
         <section className="brief-shell">
           <div className="brief-heading">
             <p className="eyebrow">YOUR FIRST MOVE BRIEF</p>
             <h1>A useful place<br />to begin.</h1>
-            <p>This prototype uses your answers to assemble a working brief. The AI reasoning layer comes next.</p>
+            <p>A bounded AI synthesis of your answers. Treat it as a working brief to pressure-test—not a final recommendation.</p>
           </div>
           <article className="brief-card">
             <div className="brief-card-head"><span>MITTEN / 01</span><span>WORKING DRAFT</span></div>
-            <div className="brief-item"><span>OPPORTUNITY</span><p>{brief.opportunity}</p></div>
-            <div className="brief-item"><span>PEOPLE &amp; OUTCOME</span><p>{brief.people}</p></div>
-            <div className="brief-item accent"><span>THE FIRST MOVE</span><p>{brief.firstMove}</p></div>
+            <div className="brief-item"><span>THE JOB</span><p>{jobSentence}</p></div>
+            <div className="brief-item"><span>DESIRED OUTCOME</span><p>{brief.outcome}</p></div>
+            <div className="brief-item"><span>STRONGEST PRODUCT RISK / {brief.strongestRisk.toUpperCase()}</span><p>{brief.risks[brief.strongestRisk]}</p></div>
+            <div className="brief-item accent"><span>THE FIRST MOVE</span><p>{brief.test}</p></div>
             <div className="brief-item"><span>EVIDENCE TO COLLECT</span><p>{brief.evidence}</p></div>
             <div className="brief-actions">
-              <button onClick={() => navigator.clipboard.writeText(`MITTEN FIRST MOVE\n\nOpportunity: ${brief.opportunity}\n\nPeople & outcome: ${brief.people}\n\nFirst move: ${brief.firstMove}\n\nEvidence: ${brief.evidence}`)}>Copy brief</button>
+              <button onClick={() => navigator.clipboard.writeText(`MITTEN FIRST MOVE\n\nThe job: ${jobSentence}\n\nDesired outcome: ${brief.outcome}\n\nStrongest product risk (${brief.strongestRisk}): ${brief.risks[brief.strongestRisk]}\n\nFirst move: ${brief.test}\n\nEvidence: ${brief.evidence}`)}>Copy brief</button>
               <a href="/#book">Talk it through ↗</a>
             </div>
           </article>

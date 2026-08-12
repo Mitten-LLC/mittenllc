@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
 type Lane = "government" | "ai";
-type Stage = "lane" | "input" | "analysis" | "brief";
+type Stage = "lane" | "input" | "analysis" | "clarify" | "brief" | "error";
 type InputMode = "sample" | "custom";
 type RiskKey = "value" | "usability" | "feasibility" | "viability";
 type Brief = {
@@ -143,11 +143,6 @@ const samples: Record<Lane, Array<{ id: string; label: string; body: string; bri
   ],
 };
 
-const analysisLabels: Record<Lane, string[]> = {
-  government: ["Reading the requirement", "Naming the job behind it", "Finding the current workaround", "Weighing value, use, delivery, and approval risk", "Sizing the smallest test"],
-  ai: ["Reading the workflow", "Naming the job behind it", "Finding the current workaround", "Weighing value, use, delivery, and approval risk", "Sizing the smallest test"],
-};
-
 function customBrief(lane: Lane, source: string): Brief {
   const excerpt = source.trim().replace(/\s+/g, " ");
   const short = excerpt.length > 160 ? `${excerpt.slice(0, 157)}…` : excerpt;
@@ -178,27 +173,34 @@ export function DecisionStudio() {
   const [inputMode, setInputMode] = useState<InputMode>("sample");
   const [sampleId, setSampleId] = useState("");
   const [draft, setDraft] = useState("");
-  const [analysisStep, setAnalysisStep] = useState(0);
   const [listening, setListening] = useState(false);
   const [ownerRole, setOwnerRole] = useState("");
   const [reviewDate, setReviewDate] = useState("");
+  const [generatedBrief, setGeneratedBrief] = useState<Brief | null>(null);
+  const [followUpQuestion, setFollowUpQuestion] = useState("");
+  const [followUpAnswer, setFollowUpAnswer] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [elapsed, setElapsed] = useState(0);
+  const [caseNumber, setCaseNumber] = useState("M-0000");
+  const [openedDate, setOpenedDate] = useState("");
   const recognitionRef = useRef<InstanceType<SpeechRecognitionConstructor> | null>(null);
   const briefTitleRef = useRef<HTMLHeadingElement>(null);
 
   const selectedSample = lane ? samples[lane].find((sample) => sample.id === sampleId) : undefined;
   const source = inputMode === "sample" ? selectedSample?.body || "" : draft;
-  const brief = useMemo(() => lane ? selectedSample?.brief || customBrief(lane, source) : null, [lane, selectedSample, source]);
+  const previewBrief = useMemo(() => lane ? selectedSample?.brief || customBrief(lane, source) : null, [lane, selectedSample, source]);
+  const brief = generatedBrief || previewBrief;
+
+  useEffect(() => {
+    setCaseNumber(`M-${Math.floor(1000 + Math.random() * 9000)}`);
+    setOpenedDate(new Date().toLocaleDateString("en-US", { month: "short", day: "2-digit", year: "numeric" }).toUpperCase());
+  }, []);
 
   useEffect(() => {
     if (stage !== "analysis") return;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) {
-      const finish = window.setTimeout(() => { setAnalysisStep(5); setStage("brief"); }, 650);
-      return () => window.clearTimeout(finish);
-    }
-    const timers = [1, 2, 3, 4, 5].map((step, index) => window.setTimeout(() => setAnalysisStep(step), 500 + index * 650));
-    timers.push(window.setTimeout(() => setStage("brief"), 4100));
-    return () => timers.forEach(window.clearTimeout);
+    setElapsed(0);
+    const timer = window.setInterval(() => setElapsed((current) => current + 1), 1_000);
+    return () => window.clearInterval(timer);
   }, [stage]);
 
   useEffect(() => {
@@ -209,6 +211,10 @@ export function DecisionStudio() {
     setLane(nextLane);
     setSampleId(samples[nextLane][0].id);
     setInputMode("sample");
+    setGeneratedBrief(null);
+    setFollowUpQuestion("");
+    setFollowUpAnswer("");
+    setErrorMessage("");
     setStage("input");
   }
 
@@ -239,9 +245,38 @@ export function DecisionStudio() {
     setInputMode("sample");
     setSampleId(resolvedLane ? samples[resolvedLane][0].id : "");
     setDraft("");
-    setAnalysisStep(0);
     setOwnerRole("");
     setReviewDate("");
+    setGeneratedBrief(null);
+    setFollowUpQuestion("");
+    setFollowUpAnswer("");
+    setErrorMessage("");
+  }
+
+  async function runAnalysis(answer = "", allowFollowUp = true) {
+    if (!lane || !source.trim()) return;
+    setStage("analysis");
+    setErrorMessage("");
+    try {
+      const response = await fetch("/api/analyze", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ lane, experience: "studio", source, followUpAnswer: answer, allowFollowUp }),
+      });
+      const data = await response.json() as { status?: "follow_up" | "complete"; follow_up_question?: string; brief?: Brief; error?: string };
+      if (!response.ok) throw new Error(data.error || "The read could not be completed.");
+      if (data.status === "follow_up" && data.follow_up_question) {
+        setFollowUpQuestion(data.follow_up_question);
+        setStage("clarify");
+        return;
+      }
+      if (!data.brief) throw new Error("The read did not return a usable brief.");
+      setGeneratedBrief(data.brief);
+      window.setTimeout(() => setStage("brief"), 450);
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : "The read could not be completed.");
+      setStage("error");
+    }
   }
 
   function briefMarkdown() {
@@ -324,7 +359,7 @@ ${brief.evidence}
               <h2>When a workflow eats your week, find the job worth improving.</h2><strong>Run a Workflow X-Ray <i>→</i></strong>
             </button>
           </div>
-          <p className="studio-footnote">Visual prototype. No live AI model. Nothing you type is saved.</p>
+          <p className="studio-footnote">AI-assisted working draft. One bounded call; nothing you type is saved by Mitten.</p>
         </section>
       )}
 
@@ -335,6 +370,7 @@ ${brief.evidence}
             <h1>What job are you<br /><em>trying to get done?</em></h1>
           </div>
           <div className="studio-input-panel">
+            <div className="studio-case-strip"><span>CASE {caseNumber}</span><span>OPENED {openedDate || "TODAY"}</span><span className="studio-case-status">UNRESOLVED</span></div>
             <div className="studio-mode" aria-label="Input mode">
               <button aria-pressed={inputMode === "sample"} onClick={() => setInputMode("sample")}>Use a sample</button>
               <button aria-pressed={inputMode === "custom"} onClick={() => setInputMode("custom")}>Describe it yourself</button>
@@ -346,7 +382,7 @@ ${brief.evidence}
             )}
             <div className="studio-input-actions">
               {inputMode === "custom" && <button className={`voice-button ${listening ? "listening" : ""}`} onClick={toggleVoice}><span />{listening ? "Stop listening" : "Use my voice"}</button>}
-              <button className="continue-button" disabled={!source.trim()} onClick={() => { setAnalysisStep(0); setStage("analysis"); }}>Run the X-Ray <span>→</span></button>
+              <button className="continue-button" disabled={!source.trim()} onClick={() => runAnalysis()}>Run the X-Ray <span>→</span></button>
             </div>
             <button className="studio-back" onClick={() => reset()}>← Choose another instrument</button>
           </div>
@@ -355,12 +391,31 @@ ${brief.evidence}
 
       {stage === "analysis" && lane && (
         <section className="studio-analysis">
-          <div className="studio-source"><span>INPUT / GENERAL TERMS</span><p>{source}</p></div>
+          <div className="studio-source"><div className="studio-case-strip"><span>CASE {caseNumber}</span><span>OPENED {openedDate}</span><span className="studio-case-status">IN REVIEW</span></div><span>INPUT / GENERAL TERMS</span><p>{source}</p></div>
           <div>
             <p className="eyebrow">{lane === "government" ? "REQUIREMENTS" : "WORKFLOW"} X-RAY / WEIGHING THE RISK</p>
-            <h1>Turning it into<br /><em>a discovery brief.</em></h1>
-            <div className="studio-stage-list" aria-live="polite">{analysisLabels[lane].map((label, index) => <div key={label} className={`studio-stage ${analysisStep === index + 1 ? "is-active" : ""} ${analysisStep > index + 1 ? "is-resolved" : ""}`}><i /><span>{label}</span></div>)}</div>
+            <div className="studio-analysis-status"><h1>Building the<br /><em>evidence map.</em></h1><span>{elapsed}s</span></div>
+            <p className="studio-reading-note">{elapsed > 6 ? "Still reading—the call will stop at eight seconds." : "One bounded model call. Mitten does not persist your input."}</p>
+            <div className="studio-rails" aria-live="polite">{riskKeys.map((key) => <div className={`studio-rail ${generatedBrief ? "is-armed" : ""}`} key={key}><div className="studio-rail-head"><span>{riskCopy[lane][key].label}</span><small>{riskCopy[lane][key].sub}</small></div><div className="studio-rail-track">{generatedBrief ? <div className="studio-pin">{generatedBrief.risks[key]}</div> : <div className="studio-pin-slot">ASSESSING</div>}</div></div>)}</div>
           </div>
+        </section>
+      )}
+
+      {stage === "clarify" && (
+        <section className="studio-clarify">
+          <div className="studio-clarify-stamp">ONE QUESTION BEFORE THE READ</div>
+          <p className="studio-clarify-q">{followUpQuestion}</p>
+          <textarea value={followUpAnswer} onChange={(event) => setFollowUpAnswer(event.target.value)} maxLength={1_000} placeholder="Answer in a sentence or two. General terms only." aria-label="Your follow-up answer" />
+          <div className="studio-clarify-actions"><button className="continue-button" disabled={!followUpAnswer.trim()} onClick={() => runAnalysis(followUpAnswer, false)}>Continue the read <span>→</span></button><button className="studio-clarify-skip" onClick={() => runAnalysis("Skipped by visitor", false)}>Skip—use what I gave you</button></div>
+        </section>
+      )}
+
+      {stage === "error" && (
+        <section className="studio-error">
+          <span className="studio-case-status is-error">CASE NOT PROCESSED</span>
+          <h1>The read didn&apos;t go through.</h1>
+          <p>{errorMessage}</p>
+          <div className="studio-clarify-actions"><button className="continue-button" onClick={() => runAnalysis(followUpAnswer, Boolean(!followUpAnswer))}>Try again <span>→</span></button><button className="studio-clarify-skip" onClick={() => reset(lane || undefined)}>Return to the case</button></div>
         </section>
       )}
 
@@ -369,11 +424,12 @@ ${brief.evidence}
           <div className="studio-brief-heading">
             <p className="eyebrow">MITTEN / PRODUCT DISCOVERY BRIEF</p>
             <h1 ref={briefTitleRef} tabIndex={-1}>Here&apos;s the job—<br /><em>and what it&apos;ll take.</em></h1>
-            <p>This is a structural read of the job you described—not a model that understands your organization or mission. Treat it as a brief to pressure-test.</p>
+            <p>An AI-assisted first read, grounded in the job and evidence you described. It does not know your organization or mission; treat it as a brief to pressure-test.</p>
             <div className="studio-secondary-actions"><button onClick={() => reset(lane === "government" ? "ai" : "government")}>Try the other X-Ray →</button><button onClick={() => reset()}>Start over</button></div>
           </div>
           <article className="studio-brief-card">
-            <div className="studio-brief-head"><span>DECISION STUDIO</span><span>WORKING DRAFT</span></div>
+            <div className="studio-case-strip is-packet"><span>CASE {caseNumber}</span><span>OPENED {openedDate}</span><span className="studio-case-status">EVIDENCE READY</span></div>
+            <div className="studio-brief-head"><span>DECISION PACKET</span><span>WORKING DRAFT</span></div>
             <div className="studio-brief-jtbd"><span>THE JOB</span><div className="studio-jtbd-grid"><div><b>When</b><p>{brief.jtbd.when}</p></div><div><b>I need to</b><p>{brief.jtbd.need}</p></div><div><b>So that</b><p>{brief.jtbd.soThat}</p></div></div></div>
             <div className="studio-brief-item"><span>DESIRED OUTCOME</span><p>{brief.outcome}</p></div>
             <div className="studio-brief-item"><span>CURRENT WORKAROUND</span><p>{brief.workaround}</p></div>
