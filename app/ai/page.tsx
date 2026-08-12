@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { BrandLogo } from "../BrandLogo";
+import { PrimaryHeader } from "../PrimaryHeader";
 
 export const metadata: Metadata = {
   title: "Practical AI — Mitten",
@@ -9,10 +10,14 @@ export const metadata: Metadata = {
 export default function AiPage() {
   return (
     <div className="lane-page ai-lane">
-      <header className="home-header wrap">
-        <a href="/" aria-label="Mitten home"><BrandLogo /></a>
-        <nav aria-label="Main navigation"><a href="/">Home</a><a href="/government/">Government</a><a href="/studio/?lane=ai">Workflow X-Ray</a><a href="/first-move/">First Move</a><a href="https://training.mitten.consulting/">Training</a><a className="nav-book" href="/#book">Book a conversation <span>↗</span></a></nav>
-      </header>
+      <PrimaryHeader links={[
+        { href: "/", label: "Home" },
+        { href: "/government/", label: "Government" },
+        { href: "/studio/?lane=ai", label: "Workflow X-Ray" },
+        { href: "/first-move/", label: "First Move" },
+        { href: "https://training.mitten.consulting/", label: "Training" },
+        { href: "/#book", label: "Book a conversation", primary: true },
+      ]} />
       <main>
         <section className="lane-hero wrap">
           <p className="kicker"><span /> Practical AI</p>
