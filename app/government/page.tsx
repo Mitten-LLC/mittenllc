@@ -16,8 +16,8 @@ export default function GovernmentPage() {
       <main>
         <section className="lane-hero wrap">
           <p className="kicker"><span /> Government ProductOps</p>
-          <h1>Make the mission legible<br /><em>enough to move.</em></h1>
-          <p>Mitten helps government programs and contractors turn acquisition complexity, user needs, and delivery constraints into decisions a program can defend—and work a team can execute.</p>
+          <h1>The plan underneath<br /><em>a thousand requirements.</em></h1>
+          <p>Mitten turns acquisition complexity, user needs, and delivery constraints into decisions a program can defend—and work a team can execute.</p>
           <div className="home-actions"><a className="solid-button" href="/first-move/">Start a government First Move <span>→</span></a><a className="quiet-link" href="#government-work">See the work <span>↓</span></a></div>
         </section>
         <section className="lane-proof"><div className="wrap"><span>BUILT FOR</span><strong>Program offices</strong><strong>Acquisition teams</strong><strong>Government contractors</strong><strong>Mission users</strong></div></section>
