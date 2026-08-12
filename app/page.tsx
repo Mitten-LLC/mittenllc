@@ -11,6 +11,7 @@ export default function Home() {
           <a href="/government/">Government</a>
           <a href="/ai/">Practical AI</a>
           <a href="/first-move/">First Move</a>
+          <a href="https://training.mitten.consulting/">Training</a>
           <a className="nav-book" href="#book">Book a conversation <span aria-hidden="true">↗</span></a>
         </nav>
       </header>
@@ -94,7 +95,7 @@ export default function Home() {
             <div>
               <h2>Training that fits how<br />your team actually works.</h2>
               <p>Private, role-specific AI training built around your team’s actual workflows, tools, and constraints. Delivered in a dedicated client environment.</p>
-              <a className="outline-button" href="mailto:ben@mitten.consulting?subject=Mitten%20client%20AI%20training">Discuss client training <span>→</span></a>
+              <div className="home-actions"><a className="outline-button" href="https://training.mitten.consulting/">Explore training <span>→</span></a><a className="quiet-link" href="mailto:ben@mitten.consulting?subject=Mitten%20client%20AI%20training">Discuss client training <span>↗</span></a></div>
             </div>
             <div className="training-index"><span>PRIVATE DELIVERY</span><strong>Learn with<br />your real work.</strong><small>DEDICATED CLIENT SUBDOMAIN</small></div>
           </div>
@@ -124,7 +125,7 @@ export default function Home() {
       <footer className="home-footer">
         <div className="wrap footer-grid">
           <div><BrandLogo reversed /></div>
-          <nav aria-label="Footer navigation"><a href="/government/">Government</a><a href="/ai/">Practical AI</a><a href="/first-move/">First Move</a><a href="/privacy/">Privacy</a></nav>
+          <nav aria-label="Footer navigation"><a href="/government/">Government</a><a href="/ai/">Practical AI</a><a href="/first-move/">First Move</a><a href="https://training.mitten.consulting/">Training</a><a href="/privacy/">Privacy</a></nav>
           <div className="footer-contact"><a href="mailto:ben@mitten.consulting">Contact Mitten</a><span>Nashville, Tennessee</span></div>
           <div className="footer-bottom"><span>© 2026 Mitten LLC</span></div>
         </div>
