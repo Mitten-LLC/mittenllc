@@ -175,3 +175,20 @@ button { font: inherit; }
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* Shared mobile interaction floor */
+.button { min-height:52px; font-size:15px; }
+.button { font-size:16px; font-weight:700; line-height:1.25; letter-spacing:-.01em; }
+.menu-toggle { width:44px; height:44px; align-items:center; justify-content:center; }
+
+@media (max-width:920px) {
+  .site-nav a { min-height:44px; display:flex; align-items:center; }
+}
+
+@media (max-width:560px) {
+  .training-hero h1 { font-size:56px; line-height:.96; }
+  .training-hero { gap:54px; padding-top:64px; }
+  .portal-preview { min-height:360px; }
+  .portal-top { font-size:12px; }
+  .portal-preview h2 { font-size:34px; }
+}

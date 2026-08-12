@@ -1,20 +1,18 @@
 import { BrandLogo } from "./BrandLogo";
+import { PrimaryHeader } from "./PrimaryHeader";
 
 const bookingUrl = process.env.GOOGLE_BOOKING_URL;
 
 export default function Home() {
   return (
     <div className="home-v2" id="top">
-      <header className="home-header wrap">
-        <a href="#top" aria-label="Mitten home"><BrandLogo /></a>
-        <nav aria-label="Main navigation">
-          <a href="/government/">Government</a>
-          <a href="/ai/">Practical AI</a>
-          <a href="/first-move/">First Move</a>
-          <a href="https://training.mitten.consulting/">Training</a>
-          <a className="nav-book" href="#book">Book a conversation <span aria-hidden="true">↗</span></a>
-        </nav>
-      </header>
+      <PrimaryHeader homeHref="#top" links={[
+        { href: "/government/", label: "Government" },
+        { href: "/ai/", label: "Practical AI" },
+        { href: "/first-move/", label: "First Move" },
+        { href: "https://training.mitten.consulting/", label: "Training" },
+        { href: "#book", label: "Book a conversation", primary: true },
+      ]} />
 
       <main>
         <section className="home-hero wrap">

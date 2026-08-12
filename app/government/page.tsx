@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { BrandLogo } from "../BrandLogo";
+import { PrimaryHeader } from "../PrimaryHeader";
 
 export const metadata: Metadata = {
   title: "Government ProductOps — Mitten",
@@ -9,10 +10,14 @@ export const metadata: Metadata = {
 export default function GovernmentPage() {
   return (
     <div className="lane-page government-lane">
-      <header className="home-header wrap">
-        <a href="/" aria-label="Mitten home"><BrandLogo /></a>
-        <nav aria-label="Main navigation"><a href="/">Home</a><a href="/ai/">Practical AI</a><a href="/studio/?lane=government">Requirements X-Ray</a><a href="/first-move/">First Move</a><a href="https://training.mitten.consulting/">Training</a><a className="nav-book" href="/#book">Book a conversation <span>↗</span></a></nav>
-      </header>
+      <PrimaryHeader links={[
+        { href: "/", label: "Home" },
+        { href: "/ai/", label: "Practical AI" },
+        { href: "/studio/?lane=government", label: "Requirements X-Ray" },
+        { href: "/first-move/", label: "First Move" },
+        { href: "https://training.mitten.consulting/", label: "Training" },
+        { href: "/#book", label: "Book a conversation", primary: true },
+      ]} />
       <main>
         <section className="lane-hero wrap">
           <p className="kicker"><span /> Government ProductOps</p>
