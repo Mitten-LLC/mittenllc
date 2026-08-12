@@ -11,7 +11,7 @@ export default function AiPage() {
     <div className="lane-page ai-lane">
       <header className="home-header wrap">
         <a href="/" aria-label="Mitten home"><BrandLogo /></a>
-        <nav aria-label="Main navigation"><a href="/">Home</a><a href="/government/">Government</a><a href="/studio/?lane=ai">Workflow X-Ray</a><a href="/first-move/">First Move</a><a className="nav-book" href="/#book">Book a conversation <span>↗</span></a></nav>
+        <nav aria-label="Main navigation"><a href="/">Home</a><a href="/government/">Government</a><a href="/studio/?lane=ai">Workflow X-Ray</a><a href="/first-move/">First Move</a><a href="https://training.mitten.consulting/">Training</a><a className="nav-book" href="/#book">Book a conversation <span>↗</span></a></nav>
       </header>
       <main>
         <section className="lane-hero wrap">
@@ -31,7 +31,7 @@ export default function AiPage() {
         </section>
         <section className="lane-close ai-close"><div className="wrap"><p className="section-label">THE STANDARD</p><h2>Less AI theater,<br /><em>more work that ships.</em></h2><div className="home-actions"><a className="outline-button" href="/studio/?lane=ai">Run the Workflow X-Ray <span>→</span></a><a className="quiet-link" href="/#book">Talk with Mitten <span>↗</span></a></div></div></section>
       </main>
-      <footer className="home-footer"><div className="wrap footer-grid"><div><BrandLogo reversed /></div><nav><a href="/">Home</a><a href="/government/">Government</a><a href="/studio/?lane=ai">Workflow X-Ray</a><a href="/first-move/">First Move</a></nav><div className="footer-contact"><a href="mailto:ben@mitten.consulting">Contact Mitten</a><span>Nashville, Tennessee</span></div></div></footer>
+      <footer className="home-footer"><div className="wrap footer-grid"><div><BrandLogo reversed /></div><nav><a href="/">Home</a><a href="/government/">Government</a><a href="/studio/?lane=ai">Workflow X-Ray</a><a href="/first-move/">First Move</a><a href="https://training.mitten.consulting/">Training</a></nav><div className="footer-contact"><a href="mailto:ben@mitten.consulting">Contact Mitten</a><span>Nashville, Tennessee</span></div></div></footer>
     </div>
   );
 }
