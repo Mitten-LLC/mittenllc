@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { BrandLogo } from "../BrandLogo";
 
 type Lane = "government" | "ai";
 type Stage = "lane" | "input" | "analysis" | "clarify" | "brief" | "error";
@@ -342,7 +343,7 @@ ${brief.evidence}
   return (
     <main className="studio-page">
       <header className="os-header studio-header">
-        <a href="/" aria-label="Mitten home"><img className="mitten-logo" src="/brand/mitten-logo-kit/web/mitten-wordmark-primary.svg" alt="Mitten" width="154" height="40" /></a>
+        <a href="/" aria-label="Mitten home"><BrandLogo /></a>
         <span className="os-header-label">MITTEN / DECISION STUDIO</span>
         <a className="os-close" href="/" aria-label="Return to home">×</a>
       </header>
@@ -358,11 +359,15 @@ ${brief.evidence}
           <div className="studio-lanes">
             <button className="studio-lane-card is-gov" onClick={() => selectLane("government")}>
               <span>01 / REQUIREMENTS X-RAY</span><div className="studio-proof-mark"><i /><i /><i /></div>
-              <h2>When requirements conflict, find the decision underneath.</h2><strong>Run a Requirements X-Ray <i>→</i></strong>
+              <h2>When requirements conflict, find the decision underneath.</h2>
+              <ol className="studio-lane-steps" aria-label="Requirements X-Ray steps"><li>Frame the job</li><li>Read four risks</li><li>Name the test</li></ol>
+              <strong>Run a Requirements X-Ray <i>→</i></strong>
             </button>
             <button className="studio-lane-card is-ai" onClick={() => selectLane("ai")}>
               <span>02 / WORKFLOW X-RAY</span><div className="studio-proof-mark"><i /><i /><i /></div>
-              <h2>When a workflow eats your week, find the job worth improving.</h2><strong>Run a Workflow X-Ray <i>→</i></strong>
+              <h2>When a workflow eats your week, find the job worth improving.</h2>
+              <ol className="studio-lane-steps" aria-label="Workflow X-Ray steps"><li>Frame the job</li><li>Read four risks</li><li>Name the test</li></ol>
+              <strong>Run a Workflow X-Ray <i>→</i></strong>
             </button>
           </div>
           <p className="studio-footnote">AI-assisted working draft. One bounded call; nothing you type is saved by Mitten.</p>

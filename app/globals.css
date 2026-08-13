@@ -760,6 +760,102 @@
   .studio-entry-copy h1, .studio-heading h1, .studio-brief-heading h1 { line-height:1; letter-spacing:-.045em; }
 }
 
+/* Final system pass: tighter mobile storytelling and one Mitten visual language. */
+.studio-lane-steps {
+  list-style:none;
+  margin:0 0 24px;
+  padding:0;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-block:1px solid currentColor;
+}
+.studio-lane-steps li {
+  min-height:58px;
+  padding:10px 8px 10px 0;
+  display:flex;
+  align-items:center;
+  font-size:13px;
+  font-weight:650;
+  line-height:1.35;
+}
+.studio-lane-steps li + li { padding-left:10px; border-left:1px solid currentColor; }
+.studio-lane-steps li::before { content:""; width:7px; height:7px; margin-right:8px; flex:0 0 auto; background:var(--home-maize); }
+.studio-lane-card.is-ai .studio-lane-steps li::before { border:1px solid var(--home-navy); }
+.studio-lane-card .studio-proof-mark { margin-bottom:18px; }
+.studio-lane-card h2 { margin:auto 0 22px; }
+
+.os-page {
+  --paper:#fffef9;
+  --white:#fffef9;
+  --ink:#071d3a;
+  --muted:#44536a;
+  --line:rgba(7,29,58,.22);
+  --acid:#ffcb05;
+  --blue:#071d3a;
+  --dark:#071d3a;
+  color:var(--ink);
+  font-family:var(--sans);
+}
+.os-page :where(button, textarea, a, h1, h2, h3, p, span, small, strong) { font-family:var(--sans); }
+.os-map { box-shadow:14px 14px 0 var(--acid); }
+.track-map { background:var(--ink); }
+.track-principles span, .os-map-head { color:var(--home-ice, #dbe1ff); }
+.track-choices button:hover { background:var(--ink); color:var(--white); }
+.brief-card { background:var(--ink); box-shadow:14px 14px 0 var(--acid); }
+
+.privacy-main { max-width:900px; padding-block:100px 140px; }
+.privacy-copy { max-width:780px; margin-top:56px; color:#44536a; font-size:17px; line-height:1.75; }
+.privacy-copy p { margin:0 0 24px; }
+.privacy-copy a { color:var(--home-navy); font-weight:700; text-decoration:underline; text-decoration-color:var(--home-maize); text-decoration-thickness:2px; text-underline-offset:3px; }
+.home-header > a:first-child, .os-header > a:first-child, .studio-header > a:first-child, .training-header > a:first-child {
+  min-width:44px;
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+}
+.footer-contact a { min-height:44px; display:inline-flex; align-items:center; }
+
+@media (max-width:620px) {
+  .home-hero { padding-block:48px 54px; }
+  .home-hero h1 { margin-block:25px; font-size:47px; line-height:.96; }
+  .home-actions { margin-top:30px; gap:20px; }
+  .pathways { padding-block:58px 72px; }
+  .pathways-head { margin-bottom:30px; }
+  .pathway-card { min-height:360px; padding:24px; }
+  .pathway-symbol { width:112px; height:112px; }
+  .government-symbol i { width:34px; height:34px; }
+  .government-symbol b { width:36px; height:36px; left:38px; top:38px; }
+  .product-symbol i { width:112px; top:54px; }
+  .product-symbol b { width:52px; height:52px; left:30px; top:30px; box-shadow:0 0 0 11px var(--home-ice); }
+  .pathway-card h3 { font-size:48px; }
+  .method-grid article { min-height:300px; }
+  .method-grid h3 { margin-top:38px; }
+
+  .studio-entry { padding-top:48px; }
+  .studio-entry-copy h1, .studio-heading h1, .studio-brief-heading h1 { font-size:48px; }
+  .studio-lanes { margin-top:42px; }
+  .studio-lane-card { min-height:330px; }
+  .studio-lane-card h2 { font-size:38px; }
+  .studio-lane-steps { grid-template-columns:1fr; }
+  .studio-lane-steps li { min-height:40px; }
+  .studio-lane-steps li + li { padding-left:0; border-left:0; border-top:1px solid currentColor; }
+  .studio-input-shell { padding-top:54px; gap:36px; }
+  .studio-heading h1 { margin-bottom:0; }
+  .studio-source-preview { padding:20px; }
+
+  .os-intro, .brief-shell { padding-block:48px 70px; }
+  .os-intro-copy h1, .brief-heading h1 { font-size:48px; line-height:.98; }
+  .track-map { min-height:300px; }
+  .privacy-main { padding-block:70px 90px; }
+  .privacy-title { margin-top:28px; font-size:50px; }
+  .privacy-copy { margin-top:42px; font-size:16px; line-height:1.7; }
+  .privacy-page .home-header { min-height:76px; padding-block:16px; display:flex; }
+  .privacy-page .desktop-navigation { display:block; margin-left:auto; }
+  .privacy-page .desktop-navigation nav { margin:0; }
+  .privacy-page .desktop-navigation .nav-book { min-height:44px; }
+  .privacy-page .mobile-navigation { display:none; }
+}
+
 /* Mitten Learning — course-led, scenario-based training experience. */
 .training-page {
   --training-navy:#071d3a;

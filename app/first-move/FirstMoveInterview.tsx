@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { BrandLogo } from "../BrandLogo";
 
 type SpeechRecognitionConstructor = new () => {
   continuous: boolean;
@@ -156,7 +157,7 @@ export function FirstMoveInterview() {
   return (
     <main className="os-page">
       <header className="os-header">
-        <a href="/" aria-label="Mitten home"><img className="mitten-logo" src="/brand/mitten-logo-kit/web/mitten-wordmark-primary.svg" alt="Mitten" width="154" height="40" /></a>
+        <a href="/" aria-label="Mitten home"><BrandLogo /></a>
         <span className="os-header-label">MITTEN OS / FIRST MOVE</span>
         <a className="os-close" href="/" aria-label="Return to home">×</a>
       </header>
