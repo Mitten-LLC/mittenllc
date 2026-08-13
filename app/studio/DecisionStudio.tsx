@@ -387,14 +387,24 @@ ${brief.evidence}
               <button aria-pressed={inputMode === "custom"} onClick={() => setInputMode("custom")}>Describe it yourself</button>
             </div>
             {inputMode === "sample" ? (
-              <><div className="studio-samples">{samples[lane].map((sample) => <button key={sample.id} aria-pressed={sampleId === sample.id} onClick={() => setSampleId(sample.id)}>{sample.label}</button>)}</div><div className="studio-source-preview"><span>SYNTHETIC SCENARIO</span>{selectedSample && <p className="studio-preview-jtbd">{jtbdSentence(selectedSample.brief.jtbd)}</p>}<p>{selectedSample?.body}</p></div></>
+              <>
+                <div className="studio-samples">{samples[lane].map((sample) => <button key={sample.id} aria-pressed={sampleId === sample.id} onClick={() => setSampleId(sample.id)}>{sample.label}</button>)}</div>
+                {selectedSample && <p className="studio-selected-job">{jtbdSentence(selectedSample.brief.jtbd)}</p>}
+                <div className="studio-input-actions is-sample-action">
+                  <button className="continue-button" disabled={!source.trim()} onClick={() => runAnalysis()}>Run the X-Ray <span>→</span></button>
+                </div>
+                <details className="studio-scenario-details">
+                  <summary>Read full scenario</summary>
+                  <div className="studio-source-preview"><span>SYNTHETIC SCENARIO</span><p>{selectedSample?.body}</p></div>
+                </details>
+              </>
             ) : (
               <textarea value={draft} onChange={(event) => setDraft(event.target.value)} maxLength={1800} placeholder={lane === "government" ? "Describe the requirement or decision that is stuck—and who needs it resolved. General terms only." : "Describe the workflow that is harder than it should be—and who does it today. General terms only."} aria-label="Describe your situation" />
             )}
-            <div className="studio-input-actions">
-              {inputMode === "custom" && <button className={`voice-button ${listening ? "listening" : ""}`} onClick={toggleVoice}><span />{listening ? "Stop listening" : "Use my voice"}</button>}
+            {inputMode === "custom" && <div className="studio-input-actions">
+              <button className={`voice-button ${listening ? "listening" : ""}`} onClick={toggleVoice}><span />{listening ? "Stop listening" : "Use my voice"}</button>
               <button className="continue-button" disabled={!source.trim()} onClick={() => runAnalysis()}>Run the X-Ray <span>→</span></button>
-            </div>
+            </div>}
             <button className="studio-back" onClick={() => reset()}>← Choose another instrument</button>
           </div>
         </section>
