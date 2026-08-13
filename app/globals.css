@@ -753,11 +753,55 @@
 .studio-action-fields input { min-height:48px; font-size:16px; }
 .studio-decision-gate { font-size:15px; line-height:1.55; }
 
+/* Keep the working question and next action in view without shrinking Studio's main headline. */
+.studio-clarify-q {
+  max-width:820px;
+  font-size:clamp(30px,3.2vw,42px);
+  line-height:1.08;
+}
+.studio-selected-job {
+  margin:22px 0 0;
+  padding:22px 24px;
+  border:1px solid var(--home-navy);
+  background:var(--home-ice);
+  color:var(--home-navy);
+  font-size:20px;
+  font-weight:650;
+  line-height:1.45;
+  letter-spacing:-.02em;
+}
+.studio-input-actions.is-sample-action { margin-top:14px; }
+.studio-scenario-details { margin-top:18px; }
+.studio-scenario-details > summary {
+  display:none;
+  min-height:48px;
+  align-items:center;
+  padding:10px 14px;
+  border:1px solid var(--home-navy);
+  color:var(--home-navy);
+  font-size:15px;
+  font-weight:700;
+  cursor:pointer;
+}
+.studio-scenario-details > summary::-webkit-details-marker { display:none; }
+.studio-scenario-details .studio-source-preview { min-height:0; }
+.studio-scenario-details .studio-source-preview p { margin-top:18px; }
+
 @media (max-width:620px) {
   .kicker, .section-label, .eyebrow { font-size:14px; }
   .pathway-card > span { font-size:14px; }
   .studio-entry-copy > p:last-child, .studio-brief-heading > p { font-size:18px; }
   .studio-entry-copy h1, .studio-heading h1, .studio-brief-heading h1 { line-height:1; letter-spacing:-.045em; }
+  .studio-clarify { padding-block:38px 64px; }
+  .studio-clarify-q { margin:22px 0 18px; font-size:clamp(28px,8vw,32px); line-height:1.08; }
+  .studio-clarify textarea { min-height:132px; }
+  .studio-selected-job { padding:18px; font-size:18px; line-height:1.4; }
+  .studio-scenario-details > summary { display:flex; }
+  .studio-scenario-details:not([open]) .studio-source-preview { display:none; }
+}
+
+@media (min-width:621px) {
+  .studio-scenario-details .studio-source-preview { display:block; }
 }
 
 /* Final system pass: tighter mobile storytelling and one Mitten visual language. */
