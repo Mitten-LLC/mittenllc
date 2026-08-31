@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Fraunces, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 
@@ -32,5 +33,12 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" className={`${sans.variable} ${display.variable}`}><body>{children}</body></html>;
+  return (
+    <html lang="en" className={`${sans.variable} ${display.variable}`}>
+      <body>
+        {children}
+        <Analytics mode="production" />
+      </body>
+    </html>
+  );
 }
